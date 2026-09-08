@@ -35,6 +35,7 @@ Backend integration will be handled later using API contracts explicitly provide
 * Search, filter, and sort interfaces
 * Shopping cart UI
 * Checkout UI
+* About / Store Information page
 * Authentication screens
 * User account screens
 * Order history and detail screens
@@ -162,7 +163,7 @@ Home
         └── Order Detail
 ```
 
-This is a proposed UI structure, not a final backend architecture.
+This is the approved MVP UI structure, not a backend architecture.
 
 ## 7. Page Requirements
 
@@ -304,6 +305,21 @@ UI requirements:
 * Empty order history state
 
 Do not invent order status transitions or backend order management rules.
+
+### 7.9 About / Store Information
+
+**Purpose:** Introduce the brand, build customer confidence, and guide customers toward the product catalog.
+
+UI requirements:
+
+* Brand introduction
+* Company story or mission
+* Trust-building information
+* Clear call to action linking to the product catalog
+* Responsive, accessible content layout
+* Appropriate page metadata and semantic headings
+
+The About page is required for the MVP and uses the `/about` route. When final business information is unavailable, use clearly identifiable placeholder brand content. Placeholder content must remain generic and must not present invented history, achievements, certifications, guarantees, statistics, addresses, partnerships, or other factual company claims as true.
 
 ## 8. Shared UI Components
 
@@ -449,6 +465,7 @@ The initial MVP should focus on completing the essential shopping UI journey.
 * Checkout interface
 * Login and registration screens
 * Basic account and order history interfaces
+* About / Store Information (`/about`)
 
 ### MVP Completion Criteria
 

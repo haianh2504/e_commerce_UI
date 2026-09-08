@@ -17,8 +17,11 @@ The architecture should remain simple, scalable, and understandable for a softwa
 * `next/font` for font optimization
 * `next/image` for appropriate image rendering
 * Next.js Metadata API for page metadata
+* npm for package management
 
 Do not introduce additional frameworks or dependencies without approval.
+
+Use `package-lock.json` as the only dependency lockfile. Do not create pnpm, Yarn, or Bun lockfiles. Standard project commands are `npm install`, `npm run dev`, `npm run lint`, and `npm run build`.
 
 ## 3. Architectural Principles
 
@@ -61,6 +64,7 @@ ecommerce-ui/
 ├── AGENTS.md
 ├── README.md
 ├── package.json
+├── package-lock.json
 ├── tsconfig.json
 ├── next.config.ts
 │
@@ -168,7 +172,7 @@ This is a recommended structure, not a requirement to create every folder immedi
 
 ## 5. App Router Organization
 
-The `app/` directory is responsible for routing, layouts, and page-level composition.
+The `src/app/` directory is responsible for routing, layouts, and page-level composition. Do not create duplicate root-level `app/`, `components/`, or `features/` directories.
 
 ### Route Groups
 
@@ -235,11 +239,11 @@ Place components that belong to a specific feature in `src/features/<feature>/co
 Examples:
 
 ```text
-features/catalog/components/ProductGrid.tsx
-features/catalog/components/ProductCard.tsx
-features/product/components/ProductGallery.tsx
-features/cart/components/CartItem.tsx
-features/checkout/components/OrderSummary.tsx
+src/features/catalog/components/ProductGrid.tsx
+src/features/catalog/components/ProductCard.tsx
+src/features/product/components/ProductGallery.tsx
+src/features/cart/components/CartItem.tsx
+src/features/checkout/components/OrderSummary.tsx
 ```
 
 If a component becomes genuinely reusable across features, it may be moved to the shared components directory.

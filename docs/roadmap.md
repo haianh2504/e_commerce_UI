@@ -12,7 +12,7 @@ The project is UI-only. All backend integration is deferred until the project ow
 
 * Build one milestone at a time.
 * Prefer small, reviewable tasks over large implementations.
-* Follow `AGENTS.md`, `product.md`, and `design-system.md`.
+* Follow the documentation authority order recorded in `decisions.md`, with `product.md` authoritative for product scope and `architecture.md` authoritative for technical structure.
 * Use mock data for UI development.
 * Do not invent backend endpoints or business rules.
 * Review visual quality, responsiveness, and accessibility before moving forward.
@@ -25,14 +25,15 @@ The project is UI-only. All backend integration is deferred until the project ow
 
 ### Tasks
 
-* Initialize Next.js with TypeScript, App Router, and Tailwind CSS.
+* Initialize Next.js with npm, TypeScript, App Router, Tailwind CSS, and the `src/` directory convention.
+* Generate and maintain `package-lock.json`; do not introduce another package-manager lockfile.
 * Configure Poppins and Inter using `next/font`.
 * Set up the project folder structure.
 * Add the project knowledge documents.
 * Configure design tokens for colors, typography, spacing, and radii.
 * Set up ESLint and TypeScript checks.
 * Create a basic root layout and global styles.
-* Confirm the development server runs successfully.
+* Confirm `npm run dev`, `npm run lint`, and `npm run build` run successfully.
 * Initialize Git and create the first commit.
 
 ### Deliverables
@@ -45,6 +46,9 @@ The project is UI-only. All backend integration is deferred until the project ow
 ### Acceptance Criteria
 
 * `npm run dev` starts successfully.
+* `npm run lint` and `npm run build` pass.
+* `package-lock.json` is the only dependency lockfile.
+* Routes and source code use `src/app/`, `src/components/`, and `src/features/` without duplicate root-level source directories.
 * The application renders without errors.
 * Fonts and primary colors are configured.
 * No backend or database dependencies are introduced.
@@ -92,7 +96,7 @@ The project is UI-only. All backend integration is deferred until the project ow
 * Implement featured categories.
 * Implement featured product section.
 * Implement approved promotional or editorial sections.
-* Implement the required About / Store Information page using approved content.
+* Implement the required About / Store Information page using approved content or clearly identifiable placeholder brand content.
 * Add responsive layouts and appropriate metadata.
 
 ### Deliverables
@@ -109,7 +113,7 @@ The project is UI-only. All backend integration is deferred until the project ow
 * Layout has no horizontal overflow.
 * Main content uses semantic HTML.
 * Homepage metadata is configured.
-* The About / Store Information page is accessible through storefront navigation and contains only approved store content.
+* The About / Store Information page is accessible through storefront navigation, links clearly to the product catalog, and does not present invented factual company claims.
 * Visual hierarchy and whitespace are reviewed.
 
 ## 6. Milestone 3 — Product Discovery

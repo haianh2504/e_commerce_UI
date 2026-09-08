@@ -20,7 +20,7 @@ AI assistance is used only to help implement the frontend UI.
 
 ## Technology Stack
 
-Prefer:
+Use:
 
 * **Next.js**
 * **Next.js App Router**
@@ -28,7 +28,9 @@ Prefer:
 * **React functional components**
 * **Tailwind CSS**
 
-Use the existing project configuration and package manager.
+Use npm as the package manager. Use `package-lock.json` as the only dependency lockfile; do not create pnpm, Yarn, or Bun lockfiles.
+
+Use the standard commands `npm install`, `npm run dev`, `npm run lint`, and `npm run build` when the corresponding task is required.
 
 Do not introduce additional UI frameworks, state-management libraries, component libraries, or dependencies unless explicitly approved.
 
@@ -82,7 +84,7 @@ Keep mock data separate from presentation components.
 Prefer structures such as:
 
 ```text
-data/
+src/data/mock/
   products.ts
   categories.ts
   cart.ts
@@ -105,6 +107,16 @@ Before implementing a task, read the relevant documentation when available:
 * `docs/decisions.md`
 
 If a referenced document does not exist, do not invent its contents.
+
+Resolve documentation conflicts using this authority order:
+
+1. `docs/product.md` — product scope, user requirements, and MVP acceptance criteria.
+2. `docs/architecture.md` — technical architecture, routing, folder structure, and data boundaries.
+3. `docs/decisions.md` — approved decisions, unresolved questions, and rationale.
+4. `docs/roadmap.md` — implementation order and milestones.
+5. `AGENTS.md` — operational rules for AI assistance.
+
+If documents disagree, identify the conflict, follow the higher-authority document, update dependent documentation, and record new product or architectural decisions in `docs/decisions.md`.
 
 ## Working Rules
 
@@ -130,13 +142,17 @@ If a referenced document does not exist, do not invent its contents.
 
 Use the **Next.js App Router**.
 
-Prefer:
+Use this `src/`-based structure:
 
 ```text
-app/
-components/
+src/
+  app/
+  components/
+  features/
 public/
 ```
+
+Use `src/app/` for routes and layouts, `src/components/` for shared UI components, and `src/features/` for feature-specific code. Do not create duplicate root-level `app/`, `components/`, or `features/` directories.
 
 Use file-system routing.
 
@@ -374,3 +390,13 @@ When a Figma design, screenshot, wireframe, or specification is provided, priori
 This repository is a **UI implementation project**, not a full-stack application.
 
 When uncertain whether something belongs to the frontend or backend, prefer keeping it out of this repository until the product owner provides explicit integration requirements.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

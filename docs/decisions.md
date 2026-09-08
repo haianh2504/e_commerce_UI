@@ -8,6 +8,18 @@ Its purpose is to preserve context across AI sessions, prevent repeated discussi
 
 The project owner has final authority over all decisions.
 
+### Documentation Authority
+
+Resolve documentation conflicts in this order:
+
+1. `product.md` — product scope, user requirements, and MVP acceptance criteria.
+2. `architecture.md` — technical architecture, routing, folder structure, and data boundaries.
+3. `decisions.md` — approved decisions, unresolved questions, and rationale.
+4. `roadmap.md` — implementation order and milestones.
+5. `AGENTS.md` — operational rules for AI assistance.
+
+If documents disagree, identify the conflict, follow the higher-authority document, update dependent documents, and record new product or architectural decisions here. The repository uses `decisions.md` as the decision-log filename.
+
 ## 2. Decision Statuses
 
 * **Accepted:** Approved and currently in effect.
@@ -63,7 +75,7 @@ When a decision changes, do not delete its history. Mark it as superseded and re
 
 **Consequences:**
 
-* Routes are organized under `app/`.
+* Routes are organized under `src/app/`.
 * Use `next/link` for internal navigation.
 * Use `next/navigation` when programmatic navigation is necessary.
 * Prefer Server Components by default.
@@ -326,11 +338,41 @@ When a decision changes, do not delete its history. Mark it as superseded and re
 
 **Consequences:**
 
-* Routes remain in `app/`.
-* Shared components belong in `components/`.
-* Feature-specific components belong in `features/`.
+* Routes remain in `src/app/`.
+* Shared components belong in `src/components/`.
+* Feature-specific components belong in `src/features/`.
 * Mock data and utilities remain separate.
 * Do not create unused folders prematurely.
+
+---
+
+### DEC-027 — About Page Required for MVP
+
+**Status:** Accepted
+
+**Decision:** The `/about` page is required for the MVP.
+
+**Consequences:** It includes a brand introduction, story or mission, trust-building content, and a catalog call to action. Approved content is preferred; clearly identifiable generic placeholders are allowed, but invented factual company claims are prohibited.
+
+---
+
+### DEC-028 — `src/`-Based Project Structure
+
+**Status:** Accepted
+
+**Decision:** Use `src/app/` for routes and layouts, `src/components/` for shared UI, and `src/features/` for feature-specific code.
+
+**Consequences:** `architecture.md` is authoritative for structure. Do not create duplicate root-level `app/`, `components/`, or `features/` directories.
+
+---
+
+### DEC-029 — npm Package Management
+
+**Status:** Accepted
+
+**Decision:** npm is the approved package manager.
+
+**Consequences:** Initialize and maintain `package-lock.json`, use standard npm commands, and do not introduce pnpm, Yarn, or Bun lockfiles.
 
 ## 4. Pending Decisions
 
