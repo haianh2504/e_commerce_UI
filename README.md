@@ -11,6 +11,10 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+The shared component showcase is available during development at
+[http://localhost:3000/dev/components](http://localhost:3000/dev/components).
+The route is marked `noindex, nofollow` and is not part of the storefront.
+
 ## Quality checks
 
 ```bash

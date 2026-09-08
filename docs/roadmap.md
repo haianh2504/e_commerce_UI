@@ -55,6 +55,8 @@ The project is UI-only. All backend integration is deferred until the project ow
 
 ## 4. Milestone 1 — Design System and Shared Components
 
+**Status:** In review
+
 **Goal:** Build the reusable visual foundation before implementing full pages.
 
 ### Tasks
@@ -84,37 +86,130 @@ The project is UI-only. All backend integration is deferred until the project ow
 
 ## 5. Milestone 2 — Storefront Layout and Homepage
 
-**Goal:** Establish the main shopping experience and visual identity.
+**Goal:** Establish the main shopping experience and visual identity through an approved, image-led homepage design and reusable storefront layout.
+
+### Approved Visual Direction
+
+The homepage must use the provided reference image as inspiration for its overall composition: a large, full-width photographic hero with navigation layered over the image and prominent centered content.
+
+The reference is for layout and visual composition only. Do not copy its spa branding, pink palette, serif typography, appointment functionality, or unrelated content.
+
+Apply the project's approved design system:
+
+* Primary dark color: `#092328`.
+* General storefront background: `#F3F4F4`.
+* Poppins for headings and Inter for body content.
+* Generous whitespace, clear visual hierarchy, and restrained styling.
+* Soft, accessible buttons with consistent 16px or 20px border radii.
+* Responsive layouts for phones, tablets, laptops, and desktop monitors.
+
+Major visual decisions must follow the approved reference and project documentation. Do not invent a competing visual direction.
 
 ### Tasks
 
-* Implement announcement bar if approved.
-* Implement desktop navigation.
-* Implement mobile navigation.
-* Implement footer.
-* Implement homepage hero.
-* Implement featured categories.
-* Implement featured product section.
-* Implement approved promotional or editorial sections.
-* Implement the required About / Store Information page using approved content or clearly identifiable placeholder brand content.
-* Add responsive layouts and appropriate metadata.
+#### 1. Shared Storefront Header and Navigation
+
+* Implement a shared storefront header.
+* On the homepage, position the navigation over the hero image with a transparent or subtly translucent appearance.
+* Ensure navigation text, icons, and controls remain readable over the image using appropriate contrast, overlays, or backdrop treatment.
+* Implement desktop navigation with the brand/logo, approved navigation links, and appropriate storefront actions such as search, account, and cart.
+* Implement mobile navigation with an accessible menu button, functional open/close behavior, keyboard support, and appropriate focus management.
+* Use a solid or appropriately contrasted header treatment on pages without a hero image. Do not force transparent navigation over backgrounds where readability would be compromised.
+* Implement an announcement bar only if its content and design have been explicitly approved.
+* Do not add unapproved navigation destinations or nonfunctional actions.
+
+#### 2. Homepage Hero
+
+* Implement a large, full-width hero background image that occupies most of the initial viewport.
+* Use responsive image sizing and cropping so the image remains visually effective across desktop, tablet, and mobile screens.
+* Add a dark overlay or gradient where necessary to maintain accessible text contrast.
+* Place the hero content prominently over the image, following the reference's centered composition.
+* Include one semantic H1, a concise supporting description, and one primary shopping CTA.
+* Include a secondary CTA only if it has a clear purpose and approved destination.
+* Use approved brand copy and imagery, or clearly identifiable placeholder content when final assets are unavailable.
+* Do not invent factual company claims, promotions, discounts, or product benefits.
+* Do not implement a hero carousel unless explicitly approved. The reference's carousel indicators do not constitute approval for carousel functionality.
+* Ensure the hero does not create horizontal overflow or obscure important content on smaller screens.
+
+#### 3. Featured Categories
+
+* Implement a featured categories section below the hero.
+* Transition from the image-led hero into the lighter `#F3F4F4` storefront background.
+* Use reusable cards and layout components from Milestone 1.
+* Display approved categories or clearly labeled placeholder categories.
+* Provide meaningful links to the appropriate catalog or category destinations.
+* Maintain consistent image ratios, spacing, and responsive grid behavior.
+
+#### 4. Featured Products
+
+* Implement a featured product section using the approved shared product-card design or reusable components.
+* Use approved product data or clearly identifiable mock data.
+* Include only the product information and actions supported by the current UI scope.
+* Do not invent real prices, availability, ratings, reviews, discounts, or product claims.
+* Ensure product cards remain consistent and responsive across target devices.
+* Do not implement backend fetching, inventory management, checkout logic, or other future milestone functionality.
+
+#### 5. Promotional or Editorial Sections
+
+* Implement only promotional or editorial sections that have been approved in the design brief or project documentation.
+* Do not automatically add generic marketing sections merely to fill space.
+* Use approved imagery and copy, or clearly identifiable placeholders.
+* Maintain visual cohesion with the hero, categories, and featured products.
+
+#### 6. About / Store Information Page
+
+* Implement the required About / Store Information page.
+* Use approved company content or clearly identifiable placeholder brand content.
+* Do not present invented factual claims about company history, founders, location, certifications, sustainability, or business achievements.
+* Ensure the page is accessible through storefront navigation.
+* Include a clear link to the product catalog.
+* Reuse the shared header, footer, design tokens, and layout components.
+
+#### 7. Shared Footer
+
+* Implement a reusable storefront footer with approved navigation and informational links.
+* Include only approved contact details, social links, policies, and company information.
+* Do not invent addresses, phone numbers, legal policies, or social-media accounts.
+* Ensure the footer is responsive and uses accessible semantic markup.
+
+#### 8. Responsive Layout and Metadata
+
+* Implement responsive layouts for phones, tablets, laptops, and desktop monitors.
+* Ensure there is no unintended horizontal overflow.
+* Use semantic HTML, appropriate heading hierarchy, and accessible navigation landmarks.
+* Configure homepage metadata, including title and description.
+* Configure appropriate metadata for the About / Store Information page.
+* Use meaningful image alternative text and appropriate image-loading strategies.
+* Preserve the existing Next.js App Router architecture and frontend-only scope.
 
 ### Deliverables
 
-* Complete homepage
-* About / Store Information page
-* Shared storefront header and footer
-* Responsive navigation
+* Complete homepage following the approved image-led visual direction.
+* About / Store Information page.
+* Shared storefront header and footer.
+* Responsive desktop and mobile navigation.
+* Reusable homepage sections built from the Milestone 1 design system.
+* Appropriate homepage and About page metadata.
 
 ### Acceptance Criteria
 
-* Homepage matches the approved design direction.
-* Navigation works across target devices.
-* Layout has no horizontal overflow.
-* Main content uses semantic HTML.
-* Homepage metadata is configured.
-* The About / Store Information page is accessible through storefront navigation, links clearly to the product catalog, and does not present invented factual company claims.
-* Visual hierarchy and whitespace are reviewed.
+* [ ] Homepage matches the approved reference composition and project design system.
+* [ ] Hero uses a full-width background image with readable overlaid content.
+* [ ] Homepage navigation is visually integrated with the hero.
+* [ ] Navigation remains readable and functional on pages without hero images.
+* [ ] Desktop and mobile navigation work across target devices.
+* [ ] Mobile menu supports keyboard interaction and appropriate focus behavior.
+* [ ] Hero has one semantic H1 and functional CTA destinations.
+* [ ] No unapproved carousel, announcement bar, or promotional section has been introduced.
+* [ ] Featured categories and products use approved or clearly identifiable placeholder content.
+* [ ] Layout has no unintended horizontal overflow.
+* [ ] Main content uses semantic HTML and accessible landmarks.
+* [ ] Homepage and About page metadata are configured.
+* [ ] About / Store Information page is accessible through storefront navigation and links clearly to the product catalog.
+* [ ] No invented factual company claims, contact details, promotions, or product claims are presented as real.
+* [ ] Visual hierarchy, whitespace, image cropping, and responsive behavior have been reviewed.
+* [ ] Lint, TypeScript checks, and production build pass.
+* [ ] Milestone is reviewed and accepted by the project owner before proceeding to Milestone 3.
 
 ## 6. Milestone 3 — Product Discovery
 

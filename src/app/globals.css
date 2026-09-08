@@ -9,6 +9,12 @@
   --design-text-secondary: #526367;
   --design-border: #d8dede;
   --design-disabled: #aab5b7;
+  --design-success: #166534;
+  --design-success-subtle: #ecfdf3;
+  --design-warning: #713f12;
+  --design-warning-subtle: #fff7d6;
+  --design-error: #b42318;
+  --design-error-subtle: #fff1f0;
 
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -25,7 +31,7 @@
   --design-radius-card: 1.25rem;
 
   --content-width: 80rem;
-  --transition-standard: 200ms ease;
+  --transition-standard: 200ms;
 }
 
 @theme inline {
@@ -37,6 +43,12 @@
   --color-text-secondary: var(--design-text-secondary);
   --color-border: var(--design-border);
   --color-disabled: var(--design-disabled);
+  --color-success: var(--design-success);
+  --color-success-subtle: var(--design-success-subtle);
+  --color-warning: var(--design-warning);
+  --color-warning-subtle: var(--design-warning-subtle);
+  --color-error: var(--design-error);
+  --color-error-subtle: var(--design-error-subtle);
   --font-sans: var(--font-inter);
   --font-heading: var(--font-poppins);
   --radius-button: var(--design-radius-button);
@@ -73,12 +85,35 @@ button,
 input,
 select,
 textarea {
-  transition-duration: var(--transition-standard);
+  transition-duration: 200ms;
 }
 
 :focus-visible {
   outline: 3px solid var(--color-primary);
   outline-offset: 3px;
+}
+
+.ui-spinner {
+  width: 1em;
+  height: 1em;
+  flex: none;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: ui-spin 700ms linear infinite;
+}
+
+@keyframes ui-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
 }
 
 .foundation-shell {
