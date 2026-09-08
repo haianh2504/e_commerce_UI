@@ -20,6 +20,17 @@ pnpm-debug.log*
 .env*
 !.env.example
 
+# Credentials and private keys
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+*.jks
+credentials*.json
+service-account*.json
+secrets*.json
+
 # Vercel deployment artifacts
 .vercel
 
