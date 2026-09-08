@@ -50,3 +50,4 @@ secrets*.json
 # Operating System files
 .DS_Store
 Thumbs.db
+.env.local
