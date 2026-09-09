@@ -30,7 +30,7 @@ Use:
 
 Use npm as the package manager. Use `package-lock.json` as the only dependency lockfile; do not create pnpm, Yarn, or Bun lockfiles.
 
-Use the standard commands `npm install`, `npm run dev`, `npm run lint`, and `npm run build` when the corresponding task is required.
+Use the standard commands `npm install`, `npm run dev`, `npm run lint`, `npm run typecheck`, and `npm run build` when the corresponding task is required.
 
 Do not introduce additional UI frameworks, state-management libraries, component libraries, or dependencies unless explicitly approved.
 
@@ -105,16 +105,19 @@ Before implementing a task, read the relevant documentation when available:
 * `docs/architecture.md`
 * `docs/roadmap.md`
 * `docs/decisions.md`
+* Approved page-specific specifications such as `docs/homepage-design.md`
 
 If a referenced document does not exist, do not invent its contents.
 
 Resolve documentation conflicts using this authority order:
 
-1. `docs/product.md` — product scope, user requirements, and MVP acceptance criteria.
-2. `docs/architecture.md` — technical architecture, routing, folder structure, and data boundaries.
-3. `docs/decisions.md` — approved decisions, unresolved questions, and rationale.
-4. `docs/roadmap.md` — implementation order and milestones.
-5. `AGENTS.md` — operational rules for AI assistance.
+1. `docs/product.md` — product scope, users, journeys, functional requirements, and MVP acceptance criteria.
+2. `docs/decisions.md` — accepted and pending product, design, and technical decisions.
+3. `docs/architecture.md` — technical architecture, routing, folder structure, and data boundaries.
+4. `docs/design-system.md` — global visual rules and reusable component principles.
+5. Approved page-specific specifications such as `docs/homepage-design.md` — page composition, content, imagery, and responsive behavior.
+6. `docs/roadmap.md` — implementation order, tasks, dependencies, and completion criteria.
+7. `AGENTS.md` — operational rules for AI assistance.
 
 If documents disagree, identify the conflict, follow the higher-authority document, update dependent documentation, and record new product or architectural decisions in `docs/decisions.md`.
 
@@ -230,6 +233,8 @@ Follow `docs/design-system.md` for:
 * Container widths
 * Breakpoints
 * Component appearance
+
+Use **Be Vietnam Pro** for headings and prominent display text, and **Inter** for body content and interface text, as defined in `docs/design-system.md`.
 
 Do not introduce arbitrary visual styles when an existing design rule exists.
 

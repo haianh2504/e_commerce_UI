@@ -21,7 +21,7 @@ The architecture should remain simple, scalable, and understandable for a softwa
 
 Do not introduce additional frameworks or dependencies without approval.
 
-Use `package-lock.json` as the only dependency lockfile. Do not create pnpm, Yarn, or Bun lockfiles. Standard project commands are `npm install`, `npm run dev`, `npm run lint`, and `npm run build`.
+Use `package-lock.json` as the only dependency lockfile. Do not create pnpm, Yarn, or Bun lockfiles. Standard project commands are `npm install`, `npm run dev`, `npm run lint`, `npm run typecheck`, and `npm run build`.
 
 ## 3. Architectural Principles
 
@@ -72,6 +72,8 @@ ecommerce-ui/
 │   ├── product.md
 │   ├── design-system.md
 │   ├── architecture.md
+│   ├── components.md
+│   ├── homepage-design.md
 │   ├── roadmap.md
 │   └── decisions.md
 │
@@ -180,6 +182,12 @@ Route groups such as `(store)`, `(auth)`, and `(account)` organize routes withou
 
 Use route groups when they improve layout organization. Do not create unnecessary nested layouts.
 
+### Milestone 2 Route Continuity
+
+The approved Milestone 2 public routes are `/`, `/products`, and `/about`. The existing `/dev/components` route remains a development-only showcase and must not appear in storefront navigation.
+
+Until the complete catalog and product-detail experiences are implemented, `/products` may be a clearly labeled minimal placeholder. Featured category and product links may point to `/products`; do not create premature category or product-detail routes solely to satisfy homepage links.
+
 ### Page Responsibilities
 
 A page should:
@@ -214,6 +222,7 @@ Examples:
 * Input
 * Card
 * Badge
+* Breadcrumb
 * Dialog
 * Select
 * Checkbox
@@ -230,7 +239,6 @@ Examples:
 * Navbar
 * Footer
 * Container
-* Breadcrumb
 
 ### Feature Components
 

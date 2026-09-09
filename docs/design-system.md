@@ -39,6 +39,19 @@ The following colors support the two main colors without introducing a competing
 | Border         | `#D8DEDE` | Subtle dividers and component borders           |
 | Disabled       | `#AAB5B7` | Disabled visual states                          |
 
+### Semantic Status Colors
+
+Use status colors only to communicate a real interface state. Text or another non-color cue must accompany the color.
+
+| Token          | Hex       | Usage                            |
+| -------------- | --------- | -------------------------------- |
+| Success        | `#166534` | Success text and status emphasis |
+| Success subtle | `#ECFDF3` | Success-state background         |
+| Warning        | `#713F12` | Warning text and status emphasis |
+| Warning subtle | `#FFF7D6` | Warning-state background         |
+| Error          | `#B42318` | Error text and status emphasis   |
+| Error subtle   | `#FFF1F0` | Error-state background           |
+
 ### Color Rules
 
 * Use `#F3F4F4` as the general page background.
@@ -53,7 +66,7 @@ The following colors support the two main colors without introducing a competing
 
 ### Font Families
 
-* **Poppins:** Primarily for headings, page titles, section titles, and prominent display text.
+* **Be Vietnam Pro:** Primarily for headings, page titles, section titles, and prominent display text.
 * **Inter:** Primarily for body content, navigation, buttons, forms, prices, descriptions, and supporting text.
 
 Use `next/font` to load and optimize fonts when appropriate. Avoid loading unnecessary font weights.
@@ -62,10 +75,10 @@ Use `next/font` to load and optimize fonts when appropriate. Avoid loading unnec
 
 | Element        | Desktop | Mobile  | Font    |
 | -------------- | ------- | ------- | ------- |
-| Display / Hero | 48–64px | 32–40px | Poppins |
-| H1             | 40–48px | 30–36px | Poppins |
-| H2             | 30–36px | 24–28px | Poppins |
-| H3             | 22–26px | 20–22px | Poppins |
+| Display / Hero | 48–64px | 32–40px | Be Vietnam Pro |
+| H1             | 40–48px | 30–36px | Be Vietnam Pro |
+| H2             | 30–36px | 24–28px | Be Vietnam Pro |
+| H3             | 22–26px | 20–22px | Be Vietnam Pro |
 | Body           | 16px    | 16px    | Inter   |
 | Small text     | 14px    | 14px    | Inter   |
 | Caption        | 12–13px | 12–13px | Inter   |
@@ -233,6 +246,7 @@ These are testing targets, not rigid device-specific layouts.
 Product photography should be a major visual focus.
 
 * Use consistent aspect ratios within product listings.
+* Use `4:3` as the default featured-category image ratio and `4:5` as the default product-card image ratio unless an approved page specification requires otherwise.
 * Preserve image quality and avoid distortion.
 * Use `next/image` where appropriate.
 * Provide meaningful alt text for informative images.
@@ -332,3 +346,5 @@ Do not:
 The product owner has final authority over the visual direction. AI may suggest improvements but must not silently alter the approved design system.
 
 When implementing from Figma, screenshots, or wireframes, prioritize fidelity to the approved design while preserving accessibility, responsiveness, and maintainable code.
+
+For page-specific work, follow the approved page specification after applying the product requirements, accepted decisions, architecture, and this global design system. Page specifications may refine composition and responsive behavior but must not silently replace global tokens or accepted decisions.

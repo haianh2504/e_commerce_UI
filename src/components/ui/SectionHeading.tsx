@@ -7,6 +7,7 @@ export type SectionHeadingProps = HTMLAttributes<HTMLDivElement> & {
   description?: string;
   eyebrow?: string;
   title: string;
+  titleId?: string;
 };
 
 export function SectionHeading({
@@ -15,6 +16,7 @@ export function SectionHeading({
   description,
   eyebrow,
   title,
+  titleId,
   ...props
 }: SectionHeadingProps) {
   return (
@@ -31,7 +33,10 @@ export function SectionHeading({
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="font-heading text-2xl font-semibold tracking-[-0.025em] text-primary sm:text-3xl">
+      <h2
+        id={titleId}
+        className="font-heading text-2xl font-semibold tracking-[-0.025em] text-primary sm:text-3xl"
+      >
         {title}
       </h2>
       {description ? (

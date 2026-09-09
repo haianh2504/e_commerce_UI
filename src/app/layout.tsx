@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Be_Vietnam_Pro, Inter } from "next/font/google";
 
 import "./globals.css";
 
@@ -9,20 +9,20 @@ const inter = Inter({
   display: "swap",
 });
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  variable: "--font-poppins",
+const beVietnamPro = Be_Vietnam_Pro({
+  subsets: ["latin", "vietnamese"],
+  variable: "--font-be-vietnam-pro",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600"],
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "E-commerce UI Foundation",
-    template: "%s | E-commerce UI",
+    default: "KOMO — Nội thất cho cuộc sống mỗi ngày",
+    template: "%s | KOMO",
   },
   description:
-    "A frontend-only e-commerce interface foundation built with Next.js.",
+    "KOMO giới thiệu ghế, bàn học và sofa cho góc học tập và không gian sống hiện đại.",
 };
 
 export default function RootLayout({
@@ -31,8 +31,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="vi">
+      <body className={`${inter.variable} ${beVietnamPro.variable}`}>
         {children}
       </body>
     </html>

@@ -50,7 +50,7 @@
   --color-error: var(--design-error);
   --color-error-subtle: var(--design-error-subtle);
   --font-sans: var(--font-inter);
-  --font-heading: var(--font-poppins);
+  --font-heading: var(--font-be-vietnam-pro);
   --radius-button: var(--design-radius-button);
   --radius-button-prominent: var(--design-radius-button-prominent);
   --radius-card: var(--design-radius-card);
@@ -76,7 +76,7 @@ body {
 h1,
 h2,
 h3 {
-  font-family: var(--font-poppins), Arial, sans-serif;
+  font-family: var(--font-be-vietnam-pro), Arial, sans-serif;
   line-height: 1.15;
 }
 

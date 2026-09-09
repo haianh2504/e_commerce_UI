@@ -2,279 +2,495 @@
 
 ## 1. Purpose
 
-This roadmap guides the incremental development of the e-commerce frontend UI using AI assistance.
+This roadmap guides the incremental development of a single-vendor e-commerce frontend UI using AI-assisted implementation.
 
-The project owner is responsible for product decisions, UI/UX design, visual review, and backend development. AI is responsible for implementing approved frontend tasks.
+The project owner is responsible for product decisions, UI/UX design direction, visual approval, and backend development. AI is responsible for implementing approved frontend tasks, proposing technical solutions, and reporting unresolved decisions.
 
-The project is UI-only. All backend integration is deferred until the project owner explicitly provides API contracts and requests integration.
+This repository is **frontend UI only**. Backend services, databases, authentication systems, payment processing, inventory management, and authoritative business rules are outside its scope. Backend integration begins only when the project owner explicitly provides API contracts and requests integration.
 
-## 2. Development Principles
+The roadmap defines **what to build, when to build it, and how completion is verified**. It does not replace the product requirements, architecture, design system, or decision log.
+
+## 2. Documentation and Decision Rules
+
+Before starting a milestone, read the relevant project documents and follow the authority order recorded in `decisions.md`.
+
+Document responsibilities:
+
+* `product.md`: product scope, users, journeys, and functional requirements.
+* `architecture.md`: technical structure, component organization, and architectural constraints.
+* `design-system.md`: global visual tokens, typography, spacing, components, and interaction principles.
+* `decisions.md`: accepted and pending product, design, and technical decisions.
+* `roadmap.md`: milestone order, tasks, dependencies, deliverables, and acceptance criteria.
+* `AGENTS.md`: working instructions for AI coding agents.
+* `homepage-design.md`: approved homepage composition, imagery, content, and responsive specifications.
+
+A page-specific design specification must follow the global design system and accepted decisions. If documents conflict, do not silently choose a new direction; apply the documented authority rules and report any unresolved conflict.
+
+Authority order: `product.md`, `decisions.md`, `architecture.md`, `design-system.md`, approved page specifications, `roadmap.md`, then `AGENTS.md`.
+
+### Decision Approval
+
+AI may independently choose low-impact implementation details, such as component composition, minor spacing adjustments, and responsive tuning, provided they remain within approved requirements.
+
+The following require project-owner approval before being treated as final:
+
+* Brand identity and product category.
+* Major page layout and visual direction.
+* Primary colors and typography changes.
+* Navigation information architecture.
+* New significant dependencies.
+* New business rules or backend contracts.
+* Major scope changes or new milestones.
+
+AI may propose decisions but must not mark them as accepted without approval.
+
+## 3. Development Principles
 
 * Build one milestone at a time.
-* Prefer small, reviewable tasks over large implementations.
-* Follow the documentation authority order recorded in `decisions.md`, with `product.md` authoritative for product scope and `architecture.md` authoritative for technical structure.
-* Use mock data for UI development.
-* Do not invent backend endpoints or business rules.
-* Review visual quality, responsiveness, and accessibility before moving forward.
-* Commit completed milestones to Git.
-* Update documentation when important decisions change.
+* Divide large milestones into small, reviewable tasks.
+* Inspect existing code before creating or modifying components.
+* Reuse approved components and design tokens.
+* Prefer Server Components; use Client Components only for necessary interactivity.
+* Use mock data and local UI state for demonstrations.
+* Keep mock data separate from presentation components.
+* Do not invent backend endpoints, persistence behavior, or authoritative business rules.
+* Do not introduce unnecessary dependencies or abstractions.
+* Use npm and maintain `package-lock.json` as the only package-manager lockfile.
+* Review visual quality, responsiveness, accessibility, and SEO throughout development.
+* Preserve completed work unless an approved requirement requires modification.
+* Commit accepted milestones to Git with descriptive commit messages; AI must not commit or push automatically without authorization.
 
-## 3. Milestone 0 — Project Foundation
+### Mock Content Policy
+
+Realistic fictional product names, descriptions, images, and sample prices may be used for UI demonstration when clearly identifiable as mock data.
+
+Do not present invented company history, certifications, reviews, customer statistics, addresses, guarantees, discounts, delivery promises, or other factual business claims as real.
+
+Unapproved product-specific features, such as sizes, colors, weights, or variants, must not be treated as final requirements.
+
+## 4. Milestone 0 — Project Foundation
+
+**Status:** Implemented; verify acceptance before marking Completed.
 
 **Goal:** Establish a clean and reliable frontend development environment.
 
 ### Tasks
 
 * Initialize Next.js with npm, TypeScript, App Router, Tailwind CSS, and the `src/` directory convention.
-* Generate and maintain `package-lock.json`; do not introduce another package-manager lockfile.
-* Configure Poppins and Inter using `next/font`.
-* Set up the project folder structure.
-* Add the project knowledge documents.
+* Generate and maintain `package-lock.json`.
+* Configure Be Vietnam Pro and Inter using `next/font`.
+* Establish the project folder structure.
+* Add project knowledge documents.
 * Configure design tokens for colors, typography, spacing, and radii.
-* Set up ESLint and TypeScript checks.
-* Create a basic root layout and global styles.
-* Confirm `npm run dev`, `npm run lint`, and `npm run build` run successfully.
-* Initialize Git and create the first commit.
+* Configure ESLint and TypeScript checks.
+* Create the root layout and global styles.
+* Verify development, lint, type-checking, and production build commands.
+* Initialize Git and create the first approved commit.
 
 ### Deliverables
 
-* Working Next.js project
-* Project documentation
-* Global font and color configuration
-* Clean initial folder structure
+* Working Next.js project.
+* Project documentation.
+* Global font and color configuration.
+* Clean initial folder structure.
+* Reliable npm development workflow.
 
 ### Acceptance Criteria
 
-* `npm run dev` starts successfully.
-* `npm run lint` and `npm run build` pass.
-* `package-lock.json` is the only dependency lockfile.
-* Routes and source code use `src/app/`, `src/components/`, and `src/features/` without duplicate root-level source directories.
-* The application renders without errors.
-* Fonts and primary colors are configured.
-* No backend or database dependencies are introduced.
+* [ ] `npm run dev` starts successfully.
+* [ ] `npm run lint` passes.
+* [ ] TypeScript checking passes using the configured command.
+* [ ] `npm run build` passes.
+* [ ] `package-lock.json` is the only dependency lockfile.
+* [ ] Source code follows the approved `src/` structure.
+* [ ] Fonts and primary colors are configured.
+* [ ] No backend or database dependencies are introduced.
+* [ ] Project owner accepts the foundation.
 
-## 4. Milestone 1 — Design System and Shared Components
+## 5. Milestone 1 — Design System and Shared Components
 
-**Status:** In review
+**Status:** In review.
 
-**Goal:** Build the reusable visual foundation before implementing full pages.
+**Goal:** Build the reusable visual foundation before implementing full storefront pages.
 
 ### Tasks
 
 * Define reusable layout containers.
-* Implement Button variants.
+* Implement approved Button variants.
 * Implement Input, Select, Checkbox, and Textarea components as needed.
 * Implement Card and SectionHeading components.
 * Implement Badge, Breadcrumb, and basic feedback components.
 * Implement loading, empty, and error state components.
-* Create a component showcase or development page if useful.
-* Review hover, focus, disabled, and responsive states.
+* Create a development-only component showcase if useful.
+* Review hover, focus, disabled, loading, and responsive states.
+* Document component variants and usage.
+* Resolve visual inconsistencies before the components are reused in full pages.
 
 ### Deliverables
 
-* Reusable UI component library
-* Consistent design tokens
-* Documented component variants
+* Reusable UI component library.
+* Consistent design tokens.
+* Documented component variants.
+* Component showcase or equivalent visual review environment.
 
 ### Acceptance Criteria
 
-* Components follow the approved design system.
-* Buttons use accessible contrast and consistent 16px or 20px radii.
-* Components support keyboard interaction where applicable.
-* Components can be reused without duplicating styling.
-* No unnecessary component library is introduced.
+* [ ] Components follow the approved design system.
+* [ ] Buttons have accessible contrast and consistent 16px or 20px radii.
+* [ ] Components support keyboard interaction where applicable.
+* [ ] Components can be reused without duplicating styling.
+* [ ] Responsive states have been reviewed.
+* [ ] No unnecessary component library is introduced.
+* [ ] Relevant technical checks pass.
+* [ ] Project owner visually reviews and accepts the components.
 
-## 5. Milestone 2 — Storefront Layout and Homepage
+## 6. Milestone 2 — Storefront Layout and Homepage
 
-**Goal:** Establish the main shopping experience and visual identity through an approved, image-led homepage design and reusable storefront layout.
+**Status:** In review; generated visual assets and rendered UI await project-owner acceptance.
 
-### Approved Visual Direction
+**Goal:** Establish the main shopping experience and visual identity through an approved, image-led homepage and reusable storefront layout.
 
-The homepage must use the provided reference image as inspiration for its overall composition: a large, full-width photographic hero with navigation layered over the image and prominent centered content.
+Milestone 2 is divided into a **design approval phase** and an **implementation phase**. AI must not begin major page implementation until the visual specification is sufficiently approved.
 
-The reference is for layout and visual composition only. Do not copy its spa branding, pink palette, serif typography, appointment functionality, or unrelated content.
+### 6.1 Approved Foundation
 
-Apply the project's approved design system:
+The homepage uses the approved reference interpretation as inspiration for its composition:
 
-* Primary dark color: `#092328`.
+* Large, full-width photographic hero.
+* Navigation visually layered over the hero image.
+* Prominent centered hero content.
+* Calm, premium, approachable e-commerce presentation.
+* Generous whitespace and clear visual hierarchy.
+
+The reference is for composition only. Do not copy its spa branding, pink palette, serif typography, appointment functionality, or unrelated content.
+
+Apply the approved design system:
+
+* Primary dark: `#092328`.
 * General storefront background: `#F3F4F4`.
-* Poppins for headings and Inter for body content.
-* Generous whitespace, clear visual hierarchy, and restrained styling.
-* Soft, accessible buttons with consistent 16px or 20px border radii.
-* Responsive layouts for phones, tablets, laptops, and desktop monitors.
+* Be Vietnam Pro for headings.
+* Inter for body content and interface text.
+* Light neutral surfaces.
+* Soft, accessible buttons with consistent 16px or 20px radii.
+* Restrained hover effects and minimal visual clutter.
+* Responsive design for phones, tablets, laptops, and desktop monitors.
 
-Major visual decisions must follow the approved reference and project documentation. Do not invent a competing visual direction.
+KOMO is the approved brand name. The storefront is Vietnamese-first and focuses on chairs, study desks, and sofas. Use `vi-VN` and VND for Milestone 2. The approved page-level direction is recorded in `docs/homepage-design.md`; the generated logo and final hero asset remain subject to visual review.
 
-### Tasks
+### 6.2 Phase A — Homepage Design Specification
 
-#### 1. Shared Storefront Header and Navigation
+**Goal:** Resolve the major visual decisions before Codex implements the homepage.
 
-* Implement a shared storefront header.
-* On the homepage, position the navigation over the hero image with a transparent or subtly translucent appearance.
-* Ensure navigation text, icons, and controls remain readable over the image using appropriate contrast, overlays, or backdrop treatment.
-* Implement desktop navigation with the brand/logo, approved navigation links, and appropriate storefront actions such as search, account, and cart.
-* Implement mobile navigation with an accessible menu button, functional open/close behavior, keyboard support, and appropriate focus management.
-* Use a solid or appropriately contrasted header treatment on pages without a hero image. Do not force transparent navigation over backgrounds where readability would be compromised.
-* Implement an announcement bar only if its content and design have been explicitly approved.
-* Do not add unapproved navigation destinations or nonfunctional actions.
+#### Tasks
 
-#### 2. Homepage Hero
+* Maintain the approved design in `docs/homepage-design.md`.
+* Create and review the AI-generated KOMO logo.
+* Obtain a supplied hero image or separate authorization to generate candidates, then visually approve the final hero asset.
+* Record any later changes to major product or design decisions in `decisions.md` before implementation.
+* Obtain explicit authorization before beginning the first implementation task.
 
-* Implement a large, full-width hero background image that occupies most of the initial viewport.
-* Use responsive image sizing and cropping so the image remains visually effective across desktop, tablet, and mobile screens.
-* Add a dark overlay or gradient where necessary to maintain accessible text contrast.
-* Place the hero content prominently over the image, following the reference's centered composition.
-* Include one semantic H1, a concise supporting description, and one primary shopping CTA.
-* Include a secondary CTA only if it has a clear purpose and approved destination.
-* Use approved brand copy and imagery, or clearly identifiable placeholder content when final assets are unavailable.
-* Do not invent factual company claims, promotions, discounts, or product benefits.
-* Do not implement a hero carousel unless explicitly approved. The reference's carousel indicators do not constitute approval for carousel functionality.
-* Ensure the hero does not create horizontal overflow or obscure important content on smaller screens.
+#### Required Design Specification
 
-#### 3. Featured Categories
+The specification should identify, as applicable:
 
-* Implement a featured categories section below the hero.
-* Transition from the image-led hero into the lighter `#F3F4F4` storefront background.
-* Use reusable cards and layout components from Milestone 1.
-* Display approved categories or clearly labeled placeholder categories.
-* Provide meaningful links to the appropriate catalog or category destinations.
-* Maintain consistent image ratios, spacing, and responsive grid behavior.
+* Reference images or Figma links.
+* Brand and content status.
+* Hero image and mobile crop/focal-point behavior.
+* Hero height strategy and content alignment.
+* Header layout, overlay treatment, and scroll behavior.
+* Typography hierarchy and text-width constraints.
+* Section order, grids, image ratios, and spacing approach.
+* Button hierarchy and destinations.
+* Mobile navigation behavior.
+* About page composition.
+* Footer structure.
+* Approved assets and placeholder rules.
 
-#### 4. Featured Products
+Exact pixel values are not required for every element. AI may tune minor implementation details within the approved design.
 
-* Implement a featured product section using the approved shared product-card design or reusable components.
-* Use approved product data or clearly identifiable mock data.
-* Include only the product information and actions supported by the current UI scope.
-* Do not invent real prices, availability, ratings, reviews, discounts, or product claims.
-* Ensure product cards remain consistent and responsive across target devices.
-* Do not implement backend fetching, inventory management, checkout logic, or other future milestone functionality.
+#### Design Gate
 
-#### 5. Promotional or Editorial Sections
+* [x] Major homepage composition is approved.
+* [x] Brand and product-category decisions are resolved.
+* [ ] The generated logo and hero candidates are visually approved.
+* [x] Navigation destinations are defined.
+* [x] Section order and excluded optional sections are approved.
+* [x] Responsive direction is sufficiently specified.
+* [x] Important decisions are recorded in `decisions.md`.
+* [x] Project owner authorized implementation on 2026-09-09.
 
-* Implement only promotional or editorial sections that have been approved in the design brief or project documentation.
-* Do not automatically add generic marketing sections merely to fill space.
-* Use approved imagery and copy, or clearly identifiable placeholders.
-* Maintain visual cohesion with the hero, categories, and featured products.
+### 6.3 Incremental Implementation Tasks
 
-#### 6. About / Store Information Page
+Complete and review Milestone 2 in this order. Do not combine all tasks into one uncontrolled implementation session.
 
-* Implement the required About / Store Information page.
-* Use approved company content or clearly identifiable placeholder brand content.
-* Do not present invented factual claims about company history, founders, location, certifications, sustainability, or business achievements.
-* Ensure the page is accessible through storefront navigation.
-* Include a clear link to the product catalog.
-* Reuse the shared header, footer, design tokens, and layout components.
+1. Create and obtain visual approval for the KOMO logo; obtain or create the hero only after its asset source is authorized.
+2. Implement the storefront shell, approved routes, header, and accessible mobile navigation.
+3. Implement and visually review the homepage hero.
+4. Implement featured categories and the minimum reusable ProductCard/ProductGrid foundation.
+5. Implement the About page and shared footer.
+6. Complete responsive, accessibility, SEO, navigation, and technical verification.
 
-#### 7. Shared Footer
+### 6.4 Shared Storefront Header and Navigation
 
-* Implement a reusable storefront footer with approved navigation and informational links.
-* Include only approved contact details, social links, policies, and company information.
-* Do not invent addresses, phone numbers, legal policies, or social-media accounts.
-* Ensure the footer is responsive and uses accessible semantic markup.
+#### Tasks
 
-#### 8. Responsive Layout and Metadata
+* Implement a reusable shared storefront header.
+* Overlay the homepage header on the hero image.
+* Use a transparent or subtly translucent treatment with sufficient contrast.
+* Implement the approved Vietnamese links: Trang chủ, Sản phẩm, Ghế, Bàn học, Sofa, and Về chúng tôi.
+* Omit search, account, and cart actions until their valid UI routes exist.
+* Implement accessible mobile navigation with open/close behavior, keyboard support, and appropriate focus handling.
+* Use an appropriately contrasted header on non-hero pages.
+* Keep the header sticky, transparent over the initial hero, solid after scrolling, and solid on inner pages.
+* Do not implement an announcement bar.
+* Avoid dead links, unsupported destinations, and nonfunctional actions.
 
-* Implement responsive layouts for phones, tablets, laptops, and desktop monitors.
-* Ensure there is no unintended horizontal overflow.
-* Use semantic HTML, appropriate heading hierarchy, and accessible navigation landmarks.
-* Configure homepage metadata, including title and description.
-* Configure appropriate metadata for the About / Store Information page.
-* Use meaningful image alternative text and appropriate image-loading strategies.
-* Preserve the existing Next.js App Router architecture and frontend-only scope.
+### 6.5 Homepage Hero
+
+#### Tasks
+
+* Implement a large, full-width photographic hero.
+* Keep the hero approximately 70–85svh so the next section is partially visible.
+* Use responsive image sizing and cropping.
+* Preserve the approved image focal point across target devices.
+* Apply an overlay or gradient where necessary for readable text.
+* Implement centered content according to the approved design.
+* Use the approved Vietnamese H1, supporting copy, and primary CTA from `docs/homepage-design.md`.
+* Do not include a secondary CTA.
+* Use approved imagery and copy or clearly identifiable placeholders.
+* Do not implement a carousel.
+* Ensure the hero does not obscure essential content or create horizontal overflow.
+* Optimize the hero image appropriately without sacrificing the approved composition.
+
+### 6.6 Featured Categories
+
+#### Tasks
+
+* Implement the approved featured-category section.
+* Transition from the image-led hero into the lighter storefront background.
+* Reuse Milestone 1 containers, headings, cards, and design tokens.
+* Use the approved categories Ghế, Bàn học, and Sofa.
+* Use image-led cards with a `4:3` image ratio.
+* Implement consistent image ratios and responsive grids.
+* Link category cards to valid destinations.
+
+### 6.7 Featured Products and Listing Foundations
+
+#### Tasks
+
+* Implement or reuse the minimum reusable ProductCard and ProductGrid components required for the homepage.
+* Keep mock product data separate from presentation.
+* Display four clearly identified fictional products with image, Vietnamese name, mock VND price, and link.
+* Use `4:5` product imagery.
+* Maintain consistent image ratios, card hierarchy, and responsive behavior.
+* Use meaningful product links.
+* Do not implement cart behavior, filtering, sorting, or product-detail functionality in this milestone.
+* Do not present fake ratings, reviews, stock counts, discounts, or promotional claims as real.
+
+**Boundary with Milestone 3:** Milestone 2 establishes the minimum reusable listing components. Milestone 3 extends and reuses them for the complete catalog and product-discovery experience. Do not create duplicate ProductCard or ProductGrid implementations.
+
+### 6.8 Excluded Optional Homepage Content
+
+Do not implement promotional/editorial content, a newsletter, testimonials, value propositions, an About teaser, a sale section, or other homepage filler during Milestone 2.
+
+### 6.9 About / Store Information Page
+
+#### Tasks
+
+* Implement the required `/about` route.
+* Follow the approved About page visual direction.
+* Reuse the shared header, footer, and design system.
+* Include a brand introduction and generic mission/story content when final information is unavailable.
+* Provide a clear CTA linking to the product catalog.
+* Use semantic headings and appropriate metadata.
+* Do not invent factual company history, founders, locations, certifications, achievements, partnerships, or guarantees.
+
+### 6.10 Shared Footer
+
+#### Tasks
+
+* Implement a reusable storefront footer.
+* Include the KOMO text wordmark, neutral description, and links to `/`, `/products`, and `/about`.
+* Omit contact, social, newsletter, shipping/returns, privacy, terms, and FAQ content until real content and destinations are approved.
+* Do not display the provisional address or invent addresses, phone numbers, legal policies, or social accounts.
+* Ensure responsive layout and accessible semantic markup.
+* Avoid dead links and unsupported functionality.
+
+### 6.11 Route Continuity
+
+Implement `/`, `/products`, and `/about`. The `/products` route may be a minimal, clearly labeled catalog placeholder until Milestone 3. Keep `/dev/components` development-only and out of storefront navigation.
+
+Link featured category and product cards to `/products`. Do not implement catalog filtering, sorting, product details, search, account, cart, or checkout merely to satisfy a Milestone 2 link.
+
+### 6.12 Responsive, Accessibility, and SEO Review
+
+#### Tasks
+
+* Review representative phone, tablet, laptop, and desktop widths.
+* Verify no unintended horizontal overflow.
+* Review image cropping, typography, grids, and touch targets.
+* Use semantic header, nav, main, and footer landmarks.
+* Maintain a logical heading hierarchy and one appropriate homepage H1.
+* Provide visible focus states and keyboard-accessible navigation.
+* Ensure sufficient contrast over the hero image.
+* Respect reduced-motion preferences.
+* Configure homepage and About page metadata.
+* Use meaningful image alternative text and appropriate loading strategies.
+* Avoid invented production domains or misleading structured data.
 
 ### Deliverables
 
-* Complete homepage following the approved image-led visual direction.
-* About / Store Information page.
+* Approved homepage design specification.
+* Complete image-led homepage.
 * Shared storefront header and footer.
 * Responsive desktop and mobile navigation.
-* Reusable homepage sections built from the Milestone 1 design system.
-* Appropriate homepage and About page metadata.
+* Featured categories and products.
+* Reusable ProductCard/ProductGrid foundations where needed.
+* About / Store Information page.
+* Minimal route placeholders only where approved and necessary.
+* Appropriate metadata and responsive behavior.
 
 ### Acceptance Criteria
 
-* [ ] Homepage matches the approved reference composition and project design system.
+* [x] Design specification was approved before major implementation.
+* [ ] Homepage matches the approved reference composition and design system.
 * [ ] Hero uses a full-width background image with readable overlaid content.
 * [ ] Homepage navigation is visually integrated with the hero.
-* [ ] Navigation remains readable and functional on pages without hero images.
+* [ ] Non-hero navigation remains readable.
 * [ ] Desktop and mobile navigation work across target devices.
-* [ ] Mobile menu supports keyboard interaction and appropriate focus behavior.
+* [ ] Mobile menu supports accessible keyboard interaction and focus behavior.
 * [ ] Hero has one semantic H1 and functional CTA destinations.
-* [ ] No unapproved carousel, announcement bar, or promotional section has been introduced.
-* [ ] Featured categories and products use approved or clearly identifiable placeholder content.
-* [ ] Layout has no unintended horizontal overflow.
-* [ ] Main content uses semantic HTML and accessible landmarks.
-* [ ] Homepage and About page metadata are configured.
-* [ ] About / Store Information page is accessible through storefront navigation and links clearly to the product catalog.
-* [ ] No invented factual company claims, contact details, promotions, or product claims are presented as real.
-* [ ] Visual hierarchy, whitespace, image cropping, and responsive behavior have been reviewed.
-* [ ] Lint, TypeScript checks, and production build pass.
-* [ ] Milestone is reviewed and accepted by the project owner before proceeding to Milestone 3.
+* [ ] No unapproved carousel, announcement bar, or promotional section exists.
+* [ ] Featured categories/products use approved or clearly identified mock content.
+* [ ] ProductCard and ProductGrid foundations are reusable for Milestone 3.
+* [ ] About page is accessible through navigation and links to the catalog.
+* [ ] No invented factual company claims are presented as real.
+* [ ] No unintended horizontal overflow exists.
+* [ ] Semantic HTML, metadata, and image accessibility are reviewed.
+* [ ] Visual hierarchy, whitespace, image cropping, and responsive behavior are approved.
+* [ ] Relevant lint, TypeScript, and production build checks pass.
+* [ ] Project owner reviews and accepts the milestone before Milestone 3 begins.
 
-## 6. Milestone 3 — Product Discovery
+## 7. Milestone 3 — Product Discovery
 
-**Goal:** Allow customers to browse and explore products through the UI.
+**Status:** Implemented; awaiting project-owner review.
+
+**Goal:** Allow customers to browse and explore products through a complete mock catalog experience.
+
+### 7.1 Approved Catalog Layout
+
+* Use a simple page heading above the catalog without promotional or editorial content.
+* Display the product grid in four columns on desktop, three columns on tablet, and two columns on mobile.
+* Place filtering controls in a catalog sidebar on desktop and tablet.
+* On mobile, present the same sidebar content in an accessible collapsible drawer or panel so the approved two-column product grid retains enough width.
+* Keep product-card dimensions, image ratios, spacing, and hierarchy consistent within every breakpoint.
+
+### 7.2 Approved Filtering and Search Behavior
+
+* Provide filters for category, price, and availability only.
+* Apply filter changes immediately to local mock data without requiring a separate Apply button.
+* Keep active filter values understandable and provide an accessible way to clear them.
+* Add the product search field to the shared storefront header.
+* Apply search terms to local mock product data and keep search behavior consistent with the active filters.
+* When no products match the active search and filters, display the exact empty-state message **“No Product Found”**.
+* Do not invent backend search or filtering contracts.
+* Sorting and pagination behavior remain deferred until the project owner approves their options and interaction rules.
 
 ### Tasks
 
-* Implement ProductCard and ProductGrid.
+* Reuse and extend the ProductCard and ProductGrid foundations from Milestone 2.
+* Implement the product catalog page using the approved responsive grid and filter-sidebar layout.
 * Implement category listing pages.
-* Implement product catalog page.
-* Implement search interface.
-* Implement filter and sort controls.
-* Implement result count and pagination or approved alternative.
-* Create mock product and category data.
-* Implement loading and empty results states.
+* Extend the shared header with the approved search field.
+* Implement immediate category, price, and availability filtering using mock data.
+* Implement the approved no-results state.
+* Expand mock product and category data as needed.
+* Implement loading, empty-results, and error presentation states.
 * Add breadcrumbs and relevant metadata.
+* Review responsive grids and product navigation.
 
 ### Deliverables
 
-* Product catalog
-* Category pages
-* Search results UI
-* Reusable product listing components
+* Product catalog.
+* Category pages.
+* Header search and search-results UI.
+* Responsive filter sidebar with category, price, and availability controls.
+* Reusable product listing components.
+* Functional immediate filtering of mock data.
 
 ### Acceptance Criteria
 
-* Product cards are visually consistent.
-* Product images maintain consistent aspect ratios.
-* Filtering and sorting can be demonstrated with mock data.
-* Product navigation works.
-* Mobile and tablet layouts are reviewed.
-* No backend search or filtering contracts are invented.
+* [ ] Product cards are visually consistent with the homepage.
+* [ ] Product images maintain consistent aspect ratios.
+* [ ] The catalog grid displays four columns on desktop, three on tablet, and two on mobile.
+* [ ] The catalog has a simple heading and no unapproved promotional content.
+* [ ] Category, price, and availability filters are available from the sidebar and update results immediately.
+* [ ] The mobile filter panel is keyboard accessible and does not replace the approved two-column grid.
+* [ ] Product search is available from the shared header and works with local mock data.
+* [ ] The exact message “No Product Found” appears when no products match.
+* [ ] Product navigation works.
+* [ ] Empty and loading states are handled.
+* [ ] Mobile and tablet layouts are reviewed.
+* [ ] No backend search/filter contracts are invented.
+* [ ] Project owner accepts the discovery experience.
 
-## 7. Milestone 4 — Product Detail Experience
+## 8. Milestone 4 — Product Detail Experience
+
+**Status:** Not started.
 
 **Goal:** Provide a clear and trustworthy product evaluation interface.
 
+### 8.1 Approved Gallery and Desktop Layout
+
+* Display one large primary product image with selectable thumbnail images directly below it.
+* Keep the purchase panel sticky on desktop while the customer reviews the gallery and product information.
+* Do not make the purchase panel sticky on mobile when doing so would obstruct content or controls.
+
+### 8.2 Approved Purchase Interaction
+
+* The purchase panel must show the selected product, selected quantity, unit price, and calculated total price.
+* Let customers adjust quantity using local mock state and update the displayed total immediately.
+* After the customer activates Add to Cart, keep them on the product page and change the button to a clear confirmation state using the text **“Added to Cart.”**
+* Ensure the confirmation is perceivable by assistive technology and does not rely on color alone.
+* Treat the interaction as a frontend demonstration only. Do not persist cart data, navigate to another route, call an API, or implement backend cart, stock, or pricing logic.
+
 ### Tasks
 
-* Implement product image gallery.
-* Implement product information section.
-* Implement price display.
-* Implement quantity selector.
-* Implement Add to Cart UI.
+* Implement product detail routes.
+* Implement the approved main-image gallery with thumbnails below it.
+* Implement product information and the sticky desktop purchase panel.
+* Implement the local quantity selector and immediate mock-total calculation.
+* Implement the Add to Cart confirmation state without navigation.
 * Implement product description and specifications.
+* Implement product-specific options only when approved.
 * Implement related products if approved.
 * Implement availability and disabled states using mock data.
-* Add product metadata and valid structured data only when appropriate.
+* Add appropriate metadata and valid structured data only when justified.
+* Review touch, keyboard, and responsive behavior.
 
 ### Deliverables
 
-* Product detail page
-* Reusable product gallery
-* Product purchase controls
+* Product detail page.
+* Reusable primary-image and thumbnail gallery.
+* Sticky desktop purchase panel and accessible quantity controls.
+* Mock interaction feedback.
 
 ### Acceptance Criteria
 
-* Product information has clear hierarchy.
-* Gallery works on touch and desktop devices.
-* Quantity controls are accessible.
-* Add to Cart provides visible feedback.
-* Product details are responsive.
-* No real stock validation or backend cart logic is implemented.
+* [ ] Product information has clear hierarchy.
+* [ ] Gallery thumbnails appear below the main image and work on touch and desktop devices.
+* [ ] The purchase panel remains sticky on desktop without obscuring content.
+* [ ] The purchase panel shows the selected product, quantity, unit price, and total price.
+* [ ] Quantity controls are accessible and update the mock total immediately.
+* [ ] Add to Cart changes to the exact confirmation text “Added to Cart.” without navigating away.
+* [ ] The confirmation state is exposed to assistive technology and is not communicated by color alone.
+* [ ] Product details are responsive.
+* [ ] No persistence, API calls, real stock validation, or backend cart logic is implemented.
+* [ ] Project owner accepts the product detail experience.
 
-## 8. Milestone 5 — Shopping Cart UI
+## 9. Milestone 5 — Shopping Cart UI
+
+**Status:** Not started.
 
 **Goal:** Allow customers to review and adjust a mock shopping cart.
 
@@ -283,59 +499,72 @@ Major visual decisions must follow the approved reference and project documentat
 * Implement cart page.
 * Implement CartItem component.
 * Implement quantity adjustment controls.
-* Implement remove item interaction.
+* Implement remove-item interaction.
 * Implement cart summary.
-* Implement empty cart state.
-* Implement continue shopping and checkout navigation.
+* Implement empty-cart state.
+* Implement continue-shopping and checkout navigation.
 * Use local/mock state for demonstration.
+* Keep mock calculations separate from presentation logic.
+* Review responsive and accessible cart interaction.
 
 ### Deliverables
 
-* Functional mock cart interface
-* Reusable cart components
-* Cart summary UI
+* Functional mock cart interface.
+* Reusable cart components.
+* Cart summary UI.
 
 ### Acceptance Criteria
 
-* Quantity and removal interactions update the mock UI.
-* Empty cart state is handled.
-* Totals are clearly labeled and visually consistent.
-* Mobile cart layout is usable.
-* No real order, inventory, or payment logic is introduced.
+* [ ] Quantity and removal interactions update the mock UI.
+* [ ] Empty-cart state is handled.
+* [ ] Totals are clearly labeled and visually consistent.
+* [ ] Mobile cart layout is usable.
+* [ ] No real order, inventory, or payment logic is introduced.
+* [ ] Project owner accepts the cart UI.
 
-## 9. Milestone 6 — Checkout UI
+## 10. Milestone 6 — Checkout UI
+
+**Status:** Not started.
 
 **Goal:** Create a polished checkout presentation without implementing backend transactions.
+
+### Design Gate
+
+Before implementation, approve the intended checkout presentation and any assumptions required for the mock flow. Final shipping, payment, authentication, and order rules remain owned by the backend and product requirements.
 
 ### Tasks
 
 * Implement checkout layout.
 * Implement customer information form.
 * Implement shipping address UI.
-* Implement shipping method selection UI.
-* Implement payment method selection UI.
+* Implement approved shipping method presentation.
+* Implement approved payment method presentation.
 * Implement order summary.
-* Implement confirmation action and mock result state.
+* Implement confirmation action and clearly identified mock result state.
 * Implement relevant loading and error states.
 * Review accessibility and mobile usability.
 
 ### Deliverables
 
-* Checkout interface
-* Order summary components
-* Mock confirmation page
+* Checkout interface.
+* Order summary components.
+* Mock confirmation page.
 
 ### Acceptance Criteria
 
-* Checkout steps are clear and easy to understand.
-* Forms have accessible labels and states.
-* Order summary is readable on all target devices.
-* No real payment processing or order persistence is implemented.
-* Final business rules remain owned by the backend.
+* [ ] Checkout steps are clear and easy to understand.
+* [ ] Forms have accessible labels and states.
+* [ ] Order summary is readable on all target devices.
+* [ ] Mock confirmation is not represented as a real order.
+* [ ] No real payment processing or order persistence is implemented.
+* [ ] Final business rules remain owned by the backend.
+* [ ] Project owner accepts the checkout UI.
 
-## 10. Milestone 7 — Authentication and Account UI
+## 11. Milestone 7 — Authentication and Account UI
 
-**Goal:** Complete the customer-facing account screens.
+**Status:** Not started.
+
+**Goal:** Complete the customer-facing account screens using presentation-only behavior.
 
 ### Tasks
 
@@ -347,54 +576,67 @@ Major visual decisions must follow the approved reference and project documentat
 * Implement order history.
 * Implement order detail page.
 * Use mock account and order data.
+* Display only approved mock order statuses.
+* Implement loading, empty, and error presentation states.
+* Review responsive and accessible forms.
 
 ### Deliverables
 
-* Authentication screens
-* Account layout
-* Order history and detail interfaces
+* Authentication screens.
+* Account layout.
+* Order history and detail interfaces.
 
 ### Acceptance Criteria
 
-* Forms are responsive and accessible.
-* Order statuses are displayed using approved mock values.
-* Empty order history state is included.
-* No authentication service, token management, or backend account logic is implemented.
+* [ ] Forms are responsive and accessible.
+* [ ] Order statuses use approved mock values.
+* [ ] Empty order history is handled.
+* [ ] No authentication service, token management, or backend account logic is implemented.
+* [ ] Project owner accepts the account UI.
 
-## 11. Milestone 8 — UI Quality and Polish
+## 12. Milestone 8 — UI Quality and Polish
 
-**Goal:** Improve consistency, usability, and production readiness of the UI layer.
+**Status:** Not started.
+
+**Goal:** Improve consistency, usability, and production readiness of the frontend UI layer.
 
 ### Tasks
 
-* Review all pages against the design system.
-* Audit spacing, typography, colors, and radii.
-* Review mobile, tablet, laptop, and desktop layouts.
-* Review keyboard navigation and focus states.
-* Review image loading and layout stability.
-* Review metadata and semantic page structure.
+* Review all pages against the design system and approved page specifications.
+* Audit spacing, typography, colors, radii, and visual hierarchy.
+* Review phone, tablet, laptop, and desktop layouts.
+* Review keyboard navigation, focus states, and form accessibility.
+* Review image loading, responsive imagery, and layout stability.
+* Review metadata, semantic structure, and internal navigation.
 * Remove unused components and unnecessary dependencies.
-* Run lint, type-check, and build checks.
+* Run lint, TypeScript, and production build checks.
 * Fix visual inconsistencies and regressions.
+* Demonstrate the complete mock shopping journey.
+* Review placeholder content before any public deployment.
 
 ### Deliverables
 
-* Polished UI MVP
-* Responsive and accessibility review
-* Clean, maintainable frontend codebase
+* Polished UI MVP.
+* Responsive and accessibility review.
+* Clean, maintainable frontend codebase.
+* Documented remaining limitations.
 
 ### Acceptance Criteria
 
-* Core UI journeys can be demonstrated.
-* No major responsive layout issues remain.
-* Relevant checks pass.
-* No known critical accessibility issues remain.
-* UI follows the approved design system.
-* Backend integration remains separate.
+* [ ] Core UI journeys can be demonstrated.
+* [ ] No major responsive layout issues remain.
+* [ ] Relevant checks pass.
+* [ ] No known critical accessibility issues remain.
+* [ ] UI follows the approved design system.
+* [ ] Mock content is not misrepresented as real business information.
+* [ ] Backend integration remains separate.
+* [ ] Project owner accepts the UI MVP.
 
-## 12. Milestone 9 — Backend Integration Preparation
+## 13. Milestone 9 — Backend Integration Preparation
 
-**Goal:** Prepare the UI for future integration without implementing the backend.
+**Status:** Not started; requires explicit authorization.
+
+**Goal:** Prepare the frontend for future integration without implementing the backend.
 
 This milestone begins only when the project owner requests it.
 
@@ -405,53 +647,64 @@ This milestone begins only when the project owner requests it.
 * Define frontend request and response types from provided contracts.
 * Plan loading, error, and authentication integration states.
 * Identify UI changes required by actual backend behavior.
+* Document integration boundaries and dependencies.
+* Obtain approval before implementing any real integration.
 
 ### Deliverables
 
-* Integration plan
-* Documented frontend data requirements
-* Approved API integration tasks
+* Integration plan.
+* Documented frontend data requirements.
+* Approved API integration tasks.
 
 ### Acceptance Criteria
 
-* No API contracts are invented.
-* Backend business rules remain unchanged.
-* Integration work is explicitly approved by the project owner.
+* [ ] No API contracts are invented.
+* [ ] Backend business rules remain unchanged.
+* [ ] Integration work is explicitly approved by the project owner.
+* [ ] No backend implementation is introduced into the UI repository.
 
-## 13. Task Status
+## 14. Task Status
 
-Use the following statuses in the roadmap or issue tracker:
+Use the following statuses:
 
-* Not started
-* In progress
-* In review
-* Blocked
-* Completed
+* **Not started:** Work has not begun.
+* **In progress:** Approved implementation is underway.
+* **In review:** Implementation is ready for technical and/or visual review.
+* **Blocked:** A required decision, dependency, or asset is unavailable.
+* **Completed:** Acceptance criteria have been met and the project owner has accepted the result.
 
-A task is completed only after the implementation has been reviewed and relevant checks have been performed.
+AI may report that technical work is complete, but must not equate successful checks with final milestone acceptance.
 
-## 14. AI Task Workflow
+## 15. AI Task Workflow
 
-For each task, ask Codex to:
+For each task, Codex should:
 
-1. Read the relevant project documentation.
-2. Inspect existing files and components.
-3. Explain the implementation plan.
-4. Implement only the approved scope.
-5. Run relevant checks.
-6. Summarize changed files and remaining issues.
+1. Read the relevant project documentation and approved design specification.
+2. Inspect existing files, components, dependencies, and scripts.
+3. Identify unresolved decisions and scope boundaries.
+4. Present a concise implementation plan.
+5. Implement only the approved scope in small, reviewable steps.
+6. Reuse existing components and avoid unrelated refactoring.
+7. Run relevant checks and inspect the resulting UI.
+8. Report changed files, verification results, and remaining issues.
+9. Request project-owner visual acceptance.
+10. Update task status only according to the approved workflow.
 
-Do not ask AI to implement multiple major milestones in a single prompt.
+Do not implement multiple major milestones in a single prompt.
 
-## 15. Definition of Done
+## 16. Definition of Done
 
 A UI task is done when:
 
 * The requested interface is implemented.
-* The design matches the approved direction.
+* The result matches the approved design direction.
 * Existing components are reused where appropriate.
 * Responsive behavior is reviewed.
-* Accessibility is considered.
-* Relevant checks pass.
+* Accessibility and semantic HTML are reviewed.
+* Relevant technical checks pass.
+* Required navigation and interactions work within the mock UI scope.
 * No unrelated backend or business logic is introduced.
+* Remaining placeholders and limitations are documented.
 * The project owner has reviewed and accepted the result.
+
+A milestone is not completed solely because Codex reports success. Visual approval and the applicable acceptance criteria are required.

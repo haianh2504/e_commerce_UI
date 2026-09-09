@@ -12,11 +12,13 @@ The project owner has final authority over all decisions.
 
 Resolve documentation conflicts in this order:
 
-1. `product.md` — product scope, user requirements, and MVP acceptance criteria.
-2. `architecture.md` — technical architecture, routing, folder structure, and data boundaries.
-3. `decisions.md` — approved decisions, unresolved questions, and rationale.
-4. `roadmap.md` — implementation order and milestones.
-5. `AGENTS.md` — operational rules for AI assistance.
+1. `product.md` — product scope, users, journeys, functional requirements, and MVP acceptance criteria.
+2. `decisions.md` — accepted and pending product, design, and technical decisions.
+3. `architecture.md` — technical architecture, routing, folder structure, and data boundaries.
+4. `design-system.md` — global visual rules and reusable component principles.
+5. Approved page-specific specifications such as `homepage-design.md` — page composition, content, imagery, and responsive behavior.
+6. `roadmap.md` — implementation order, tasks, dependencies, and completion criteria.
+7. `AGENTS.md` — operational rules for AI assistance.
 
 If documents disagree, identify the conflict, follow the higher-authority document, update dependent documents, and record new product or architectural decisions here. The repository uses `decisions.md` as the decision-log filename.
 
@@ -155,9 +157,9 @@ When a decision changes, do not delete its history. Mark it as superseded and re
 
 **Status:** Accepted
 
-**Decision:** Use Poppins primarily for headings and Inter primarily for content.
+**Decision:** Use Be Vietnam Pro primarily for headings and Inter primarily for content.
 
-**Rationale:** Poppins provides a distinctive heading style, while Inter supports readability for interface content.
+**Rationale:** Be Vietnam Pro gives KOMO a modern, approachable heading style with strong Vietnamese language support, while Inter supports readability for interface content.
 
 **Consequences:**
 
@@ -346,6 +348,36 @@ When a decision changes, do not delete its history. Mark it as superseded and re
 
 ---
 
+### DEC-019 — KOMO Brand
+
+**Status:** Accepted
+
+**Decision:** The storefront brand name is KOMO. Use a text wordmark until an AI-generated logo is created and visually approved.
+
+**Consequences:** Vietnamese is the primary customer-facing language. The approved tagline is “Tiện nghi mỗi ngày, giá trị trong tầm tay.” The English reference is “Everyday comfort, thoughtfully priced.” Do not treat an unreviewed generated logo as final.
+
+---
+
+### DEC-020 — Initial Product Category
+
+**Status:** Accepted
+
+**Decision:** KOMO is a home-furniture store focused initially on chairs, study desks, and sofas.
+
+**Consequences:** Homepage imagery, navigation, categories, and mock products must reflect this focus. Decor and lighting are not approved catalog categories and must not be presented as available products without a later decision.
+
+---
+
+### DEC-021 — Language, Locale, and Currency
+
+**Status:** Accepted
+
+**Decision:** Vietnamese with locale `vi-VN` is the primary storefront language and locale. VND is the primary display currency.
+
+**Consequences:** USD is a planned secondary display currency, but currency selection and conversion are deferred until rules are approved. The incomplete Đồng Nai address supplied during planning is a placeholder and must not be displayed as a real business address.
+
+---
+
 ### DEC-027 — About Page Required for MVP
 
 **Status:** Accepted
@@ -374,39 +406,57 @@ When a decision changes, do not delete its history. Mark it as superseded and re
 
 **Consequences:** Initialize and maintain `package-lock.json`, use standard npm commands, and do not introduce pnpm, Yarn, or Bun lockfiles.
 
+---
+
+### DEC-030 — Milestone 2 Homepage Composition
+
+**Status:** Accepted
+
+**Decision:** Use a warm, inviting, modern, image-led homepage in this order: hero, featured categories, featured products, and footer. The transparent header is layered over the hero, and the top of the next section should remain visible below a hero approximately 70–85svh tall.
+
+**Consequences:** Milestone 2 excludes a carousel, announcement bar, sale CTA, newsletter, testimonials, value-proposition strip, and editorial section. Any of these requires separate approval.
+
+---
+
+### DEC-031 — Milestone 2 Navigation and Routes
+
+**Status:** Accepted
+
+**Decision:** Milestone 2 uses public routes `/`, `/products`, and `/about`. Navigation presents Trang chủ, Sản phẩm, the approved product categories, and Giới thiệu. Search, account, and cart actions are omitted until valid UI destinations exist.
+
+**Consequences:** `/products` may be a clearly labeled minimal placeholder until Milestone 3. Featured category and product links may point to `/products`; do not create premature category or product-detail routes. Mobile navigation uses an accessible side drawer. The header is transparent over the hero, becomes solid after scrolling, is solid on inner pages, and remains sticky.
+
+---
+
+### DEC-032 — Milestone 2 Content and Asset Policy
+
+**Status:** Accepted
+
+**Decision:** The homepage may use clearly identified fictional product data. The KOMO logo may be AI-generated, but the logo and the final hero asset require visual review before being treated as approved assets.
+
+**Consequences:** Use VND mock prices. Do not show ratings, reviews, discounts, stock claims, delivery claims, or promotions. Do not display the provisional address. Use generic About copy without invented company history or achievements. The hero asset source remains unresolved until an image is supplied or a candidate-generation approach is separately approved.
+
+---
+
+### DEC-033 — Incremental Milestone 2 Delivery
+
+**Status:** Accepted
+
+**Decision:** Implement Milestone 2 as separately reviewed tasks rather than one large uncontrolled change.
+
+**Consequences:** Use the task boundaries defined in `roadmap.md`. Major implementation starts only after explicit authorization, and generated visual assets remain subject to owner review.
+
+---
+
+### DEC-034 — About Header Navigation Label
+
+**Status:** Accepted
+
+**Decision:** Use “Về chúng tôi” as the customer-facing label for the `/about` destination in the shared header navigation.
+
+**Consequences:** The updated label appears in both desktop and mobile header navigation. The `/about` route, About page metadata, and footer label remain unchanged.
+
 ## 4. Pending Decisions
-
-### DEC-019 — Store Name and Branding
-
-**Status:** Pending
-
-**Question:** What is the final store name, logo, and brand identity?
-
-**Notes:** Do not invent a final brand name or logo without approval.
-
----
-
-### DEC-020 — Product Category
-
-**Status:** Pending
-
-**Question:** What type of products will the store sell?
-
-**Options may include:** Cosmetics, clothing, electronics, lifestyle products, or another category.
-
-**Notes:** Product-specific UI options should not be implemented until the category is confirmed.
-
----
-
-### DEC-021 — Currency and Locale
-
-**Status:** Pending
-
-**Question:** What currency, language, and regional formatting should the storefront use?
-
-**Notes:** Do not assume final currency or localization requirements.
-
----
 
 ### DEC-022 — Product Variants
 
@@ -440,11 +490,11 @@ When a decision changes, do not delete its history. Mark it as superseded and re
 
 ### DEC-025 — Product Search and Filtering
 
-**Status:** Pending
+**Status:** Accepted for Milestone 3 UI
 
-**Question:** Which search, filter, and sort options should be available?
+**Decision:** Provide local mock-data search plus category, price, and availability filters. Apply filters immediately. Defer sorting and pagination until their interaction rules are approved.
 
-**Notes:** Final options depend on the product catalog and approved requirements.
+**Consequences:** Search is available from the shared storefront header. Desktop and tablet use a filter sidebar, while mobile uses an accessible filter drawer and retains a two-column product grid. This decision defines presentation behavior only and does not define backend contracts.
 
 ---
 

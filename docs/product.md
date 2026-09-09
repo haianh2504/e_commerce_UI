@@ -4,17 +4,22 @@
 
 ### Product Name
 
-To be determined.
+**KOMO**
+
+The current brand treatment is a text wordmark until an AI-generated logo has been created and visually approved. The approved customer-facing tagline is:
+
+* Vietnamese: **Tiện nghi mỗi ngày, giá trị trong tầm tay.**
+* English reference: **Everyday comfort, thoughtfully priced.**
 
 ### Product Type
 
-A single-vendor e-commerce application that allows customers to discover products, view product information, manage a shopping cart, and proceed through a checkout experience.
+A single-vendor home-furniture e-commerce application focused initially on chairs, study desks, and sofas. It allows customers to discover products, view product information, manage a shopping cart, and proceed through a checkout experience.
 
 The application is being developed as a software engineering learning project. The frontend UI is implemented with AI assistance, while the backend, database, business logic, and API design are handled separately by the product owner.
 
 ### Product Vision
 
-Create a modern, trustworthy, and easy-to-use online shopping experience that helps customers find products and complete purchases with minimal friction.
+Create a modern, trustworthy, and easy-to-use furniture shopping experience that helps customers find practical, comfortable products for studying and everyday living with minimal friction.
 
 The interface should feel calm, premium, and approachable, with generous whitespace, clear product information, and consistent visual design.
 
@@ -60,7 +65,11 @@ Backend integration will be handled later using API contracts explicitly provide
 
 ### Primary Users
 
-Customers who want to browse and purchase products online using a phone, tablet, laptop, or desktop computer.
+KOMO is intended to remain accessible to customers of all ages. Its primary audience is Vietnamese teenagers and adults approximately 16–40 years old:
+
+* Teenagers and students looking for practical study desks and chairs.
+* Adults furnishing their homes with comfortable, modern sofas, desks, and chairs.
+* Budget-conscious customers who value useful everyday furniture and clear product information.
 
 ### User Needs
 
@@ -83,12 +92,20 @@ Customers should be able to:
 * Accessible interaction
 * Comfortable mobile shopping
 
+### Language, Locale, and Currency
+
+* Vietnamese is the primary storefront language.
+* The primary locale is `vi-VN`.
+* VND is the primary display currency.
+* USD is a planned secondary display currency, but currency switching and conversion behavior are deferred until their rules are explicitly defined.
+* The provided Đồng Nai street address is provisional and must not be displayed as a real business address until the project owner supplies and approves the complete address.
+
 ## 4. Product Assumptions
 
 The following assumptions are used for UI planning only and may be revised by the product owner:
 
 * The store is operated by a single vendor.
-* The product catalog may contain multiple categories.
+* The initial product catalog contains chairs, study desks, and sofas.
 * Products may have images, names, prices, descriptions, and availability indicators.
 * Customers may browse products without being signed in.
 * Account-related and checkout experiences may require authentication in the final application.
@@ -171,18 +188,17 @@ This is the approved MVP UI structure, not a backend architecture.
 
 **Purpose:** Introduce the store and guide customers toward product discovery.
 
-Potential sections:
+The approved Milestone 2 homepage order is:
 
-* Announcement bar, if approved
-* Main navigation
-* Hero section
-* Featured categories
-* Featured or new products
-* Promotional or editorial section
-* Store value propositions
-* Footer
+1. Shared header and primary navigation layered over the hero.
+2. Full-width photographic hero.
+3. Featured categories: chairs, study desks, and sofas.
+4. Featured products.
+5. Shared footer.
 
-The homepage should prioritize clear visual hierarchy and avoid excessive promotional clutter.
+The homepage should prioritize clear visual hierarchy and avoid excessive promotional clutter. Milestone 2 does not include an announcement bar, carousel, sale CTA, newsletter, testimonials, value-proposition strip, or editorial section. These require separate approval before being added.
+
+The detailed, approved homepage composition is defined in `docs/homepage-design.md`.
 
 ### 7.2 Product Listing
 
@@ -314,12 +330,12 @@ UI requirements:
 
 * Brand introduction
 * Company story or mission
-* Trust-building information
+* A clear description of whom KOMO serves and the types of furniture it offers
 * Clear call to action linking to the product catalog
 * Responsive, accessible content layout
 * Appropriate page metadata and semantic headings
 
-The About page is required for the MVP and uses the `/about` route. When final business information is unavailable, use clearly identifiable placeholder brand content. Placeholder content must remain generic and must not present invented history, achievements, certifications, guarantees, statistics, addresses, partnerships, or other factual company claims as true.
+The About page is required for the MVP and uses the `/about` route. Until final company information is supplied, use approved generic copy describing KOMO's intended product focus and customer experience. Do not present invented history, achievements, certifications, guarantees, statistics, addresses, partnerships, or other factual company claims as true.
 
 ## 8. Shared UI Components
 
@@ -358,7 +374,7 @@ Key principles:
 
 * General background: `#F3F4F4`
 * Primary color: `#092328`
-* Poppins for headings
+* Be Vietnam Pro for headings
 * Inter for content
 * Generous whitespace
 * Soft, accessible buttons with 16px or 20px border radius
@@ -447,6 +463,8 @@ Mock data should:
 * Be stored separately from presentation components.
 * Use clear TypeScript types.
 * Contain realistic but fictional product information.
+* Use VND as the primary displayed currency.
+* Be clearly identified in code and documentation as demonstration content.
 * Avoid representing mock structures as final backend schemas.
 * Be replaceable when actual API contracts are provided.
 
