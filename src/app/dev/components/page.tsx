@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 
 export default function ComponentShowcasePage() {
   return (
-    <main className="py-12 sm:py-16 lg:py-24">
+    <main id="main-content" tabIndex={-1} className="py-12 outline-none sm:py-16 lg:py-24">
       <Container>
         <Stack gap="xl">
           <header className="grid max-w-3xl gap-4">

@@ -40,11 +40,14 @@ Use this section order:
 2. Full-width hero.
 3. Featured categories.
 4. Featured products.
-5. Customer rating section.
-6. Final CTA section.
-7. Shared footer.
+5. Why KOMO / Store Benefits.
+6. Customer rating section.
+7. Final CTA section.
+8. Shared footer.
 
-Apart from the approved customer-review carousel and final CTA, do not add an announcement bar, hero carousel, secondary sale CTA, newsletter, value-proposition strip, additional promotional banner, editorial section, or About teaser during Milestone 2.
+Every homepage content section from Hero through Final CTA uses a full-viewport baseline: `min-height: 100vh`, implemented with `100svh` where supported for safer mobile viewport behavior. Sections must grow beyond one viewport when their content requires it; do not use a fixed height that clips content. The shared footer keeps its content-driven height.
+
+Apart from the approved Why KOMO benefits, customer-review carousel, and final CTA, do not add an announcement bar, hero carousel, secondary sale CTA, newsletter, additional promotional banner, editorial section, or About teaser during Milestone 2.
 
 ## 5. Header and Navigation
 
@@ -99,12 +102,13 @@ The final hero asset source has not been selected. The owner may supply an image
 
 ### Layout and Cropping
 
-* Use a full viewport hero with a minimum height of `100vh` at every supported width.
-* Allow the hero to grow beyond `100vh` if content wrapping or a short viewport would otherwise clip the header, copy, or CTA.
+* Use a full viewport hero with a minimum height of `100vh` at every supported width, using `100svh` for the implemented mobile-safe viewport unit.
+* Allow the hero to grow beyond one viewport if content wrapping or a short viewport would otherwise clip the header, copy, or CTA.
 * Do not intentionally reveal the featured-category section within the initial viewport.
 * Center the hero content.
 * Preserve the most attractive furniture arrangement or focal piece in mobile crops.
 * Use a dark overlay or gradient strong enough to maintain accessible text contrast.
+* Style **Khám phá bộ sưu tập** with the dedicated `imageCta` variant: white `#FFFFFF` background, `#092328` text, no visible border or boundary color, and a subtle shadow. Preserve strong contrast on hover and focus.
 * Prevent horizontal overflow and avoid hiding essential content behind the header.
 
 ### Approved Copy
@@ -132,11 +136,40 @@ The word “quality” expresses the intended positioning of mock storefront cop
 * Keep mock data separate from presentation components.
 * Do not display ratings, reviews, discounts, stock counts, delivery promises, availability claims, or direct cart actions.
 * Build the minimum reusable ProductCard and ProductGrid foundation needed for later extension in Milestone 3.
+
+## 8A. Why KOMO / Store Benefits
+
+Place a compact trust-focused section after Featured Products and before Customer Reviews. Keep it visually secondary to product and lifestyle sections.
+
+### Content
+
+* Heading: **Vì sao chọn KOMO?**
+* Supporting text: **Những hỗ trợ thiết thực giúp hành trình mua sắm nội thất của bạn thuận tiện và an tâm hơn.**
+* **Giao hàng toàn quốc** — pill **Nhanh chóng** — “Nhận sản phẩm thuận tiện tại các tỉnh thành trên toàn quốc. Theo dõi đơn hàng dễ dàng.” — action label **Tìm hiểu thêm**.
+* **Đổi trả dễ dàng** — pill **An tâm mua sắm** — “Quy trình đổi trả rõ ràng, hỗ trợ tận tình khi bạn cần thay đổi.” — action label **Xem chính sách**.
+* **Thanh toán an toàn** — pill **Bảo mật** — “Đa dạng phương thức thanh toán với quy trình bảo mật, minh bạch và an toàn.” — action label **Xem phương thức**.
+* **Hỗ trợ tận tâm** — pill **Luôn đồng hành** — “KOMO luôn sẵn sàng tư vấn và giải đáp mọi thắc mắc trước và sau mua hàng.” — action label **Liên hệ KOMO**.
+* Reassurance strip: **Chính sách minh bạch** — “Thông tin rõ ràng, dễ dàng tra cứu.”; **Bảo mật thông tin** — “An toàn tuyệt đối cho mọi giao dịch.”; **Hỗ trợ trước & sau mua hàng** — “Luôn đồng hành cùng bạn.”
+
+### Layout and Styling
+
+* Use four columns on desktop, a `2 × 2` grid on tablet, and either a single column or compact `2 × 2` grid on mobile when space permits.
+* Each main benefit is a light card containing a circular line-icon field and compact status pill above its title and description, followed by the action label and arrow.
+* Keep icons consistent in size, view box, rounded stroke caps, and stroke weight.
+* Use primary `#092328` for icons and titles and muted neutral text for descriptions.
+* Keep card borders and shadows subtle, with generous internal whitespace and no heavy visual treatment.
+* Place the three reassurance items in a single shared light panel beneath the main cards. Use subtle vertical separators on desktop and remove them when the panel stacks.
+* Action labels remain disabled presentation controls until real, approved destinations are supplied. Do not create dead links or invent policy, payment, tracking, or contact routes.
+* Hide decorative icons from assistive technology because the adjacent title conveys their meaning.
+* End the benefits section before the Customer Reviews surface begins. Preserve a visible `32–64px` responsive breathing gap between them; do not make the two sections appear attached.
+
 ## 9. Customer Reviews
 
 Use a horizontal carousel to demonstrate the future customer-review presentation. This section is mock UI only and must not imply that the displayed people, ratings, or statements come from verified KOMO customers.
 
-The complete Customer Reviews section uses a minimum height of `80svh`. Center its heading, disclosure, carousel, and controls vertically within that space while allowing the section to grow when content wrapping requires more room. Do not force an exact fixed height or clip reviews on short or narrow screens.
+Use a solid white `#FFFFFF` background across the complete Customer Reviews section. Keep it visually separate from Why KOMO / Store Benefits with the approved `32–64px` breathing gap.
+
+The complete Customer Reviews section uses a minimum height of `100svh`. Center its heading, disclosure, carousel, and controls vertically within that space while allowing the section to grow when content wrapping requires more room. Do not force an exact fixed height or clip reviews on short or narrow screens.
 
 ### Content and Disclosure
 
@@ -145,8 +178,9 @@ The complete Customer Reviews section uses a minimum height of `80svh`. Center i
 * Supporting text: **Nội dung đánh giá dưới đây là dữ liệu minh họa cho giao diện.**
 * Display the disclosure visibly near the heading; do not hide it in accessibility-only text or the footer.
 * Write all customer-facing copy, controls, and accessibility labels in Vietnamese.
-* Each card contains a fictional customer name, a clearly presented mock star rating, and a concise Vietnamese review.
-* Do not display an aggregate rating, verified-purchase badge, customer total, review date, location, or another claim that could be mistaken for real business data.
+* Each card contains a fictional customer name, a clearly presented mock star rating, a concise Vietnamese review, mock relative date, mock purchase-state badge, reviewer placeholder, and representative product image.
+* The section-level disclosure and the visible **ĐÁNH GIÁ MINH HỌA** label in every card must make clear that the purchase badge, date, person, rating, and statement are demonstration content.
+* Do not display an aggregate rating, customer total, location, or another claim that could be mistaken for real business data.
 
 Example mock review copy may include:
 
@@ -156,10 +190,13 @@ Example mock review copy may include:
 
 ### Card Layout
 
-* Keep cards consistent in width, padding, border radius, and content hierarchy.
-* Present star icons with consistent sizing and spacing, accompanied by accessible text such as **“Đánh giá minh họa: 5 trên 5 sao”** so meaning does not rely on icons alone.
+* Present extra-compact review cards with four cards visible per carousel viewport on desktop and two cards visible on mobile and tablet.
+* Follow the supplied vertical hierarchy: reviewer identity and purchase badge first, then five stars, quoted review, and a representative product image.
+* Place a compact rounded **Đã mua hàng** badge with a check icon beside the reviewer metadata when width permits; allow it to wrap below that metadata in narrow cards without covering content. Treat the state as mock content, not proof of a real transaction.
+* The reviewer identity contains a circular initials-based placeholder, fictional name, uppercase **ĐÁNH GIÁ MINH HỌA** label, and mock relative date.
+* Keep cards consistent in width, compact padding, border radius, and content hierarchy. Use a compact image area with rounded corners, cover cropping, and meaningful alternative text.
+* Present star icons with consistent sizing and spacing and the fixed color `#FDCC0D`, accompanied by accessible text such as **“Đánh giá minh họa: 5 trên 5 sao”** so meaning does not rely on color or icons alone.
 * Hide decorative star icons from assistive technology to prevent repeated announcements.
-* Show three cards per view on desktop, two on tablet, and one on mobile.
 * Allow card height to grow with text rather than truncating essential review content.
 
 ### Carousel Behavior and Accessibility
@@ -177,15 +214,19 @@ Example mock review copy may include:
 
 ## 10. Final CTA
 
-Use the supplied reference for content hierarchy and layout only. Do not copy its colors, bakery branding, address, rating, customer count, or contact action.
+Use the supplied references for content hierarchy and layout only. Do not copy their colors, bakery branding, address, imagery, or typography. The newly supplied KOMO wireframe approves the content listed below, subject to the mock-data disclosure and contact-state rules.
 
 ### Content
 
-* Eyebrow: **SẴN SÀNG KHÁM PHÁ?**
+* Eyebrow: **KHÔNG GIAN CỦA BẠN**.
 * Heading: **Sẵn sàng làm mới không gian sống?**
-* Supporting text: **Khám phá ghế, bàn học và sofa được tuyển chọn cho góc học tập và không gian sống mỗi ngày.**
+* Supporting text: **Khám phá những sản phẩm được lựa chọn để mang lại sự thoải mái cho ngôi nhà của bạn.**
 * Primary CTA: **Khám phá sản phẩm** → `/products`
-* Secondary CTA: **Tìm hiểu về KOMO** → `/about`
+* Secondary CTA: **Liên hệ**. Display it in a disabled state until a real contact route or destination is supplied.
+* Trust row: five decorative stars followed by **4.9** and **Được tin tưởng bởi 200+ khách hàng**.
+* Mock disclosure: **Số liệu đánh giá minh họa.** Display this visibly beside or immediately below the trust row.
+
+The rating and customer count are approved as presentation-only mock content, not verified KOMO business statistics. Do not add structured review data, SEO claims, verified badges, or hidden metadata based on these values.
 
 ### Layout and Behavior
 
@@ -193,18 +234,22 @@ Use the supplied reference for content hierarchy and layout only. Do not copy it
 * Display the CTA edge to edge across the full viewport width; do not constrain its background inside a container, card, rounded panel, or visible side margin.
 * Use `public/images/komo/final-cta-cozy-home.jpg` as the full-section background. The local asset comes from the project-owner-supplied source: `https://blog.canadianloghomes.com/wp-content/uploads/2024/04/cozy-home-ideas-1.jpg`.
 * Render the background with cover cropping and preserve the main seating area across viewports. Prefer a centered focal point on desktop and tune the mobile focal point toward the furniture rather than the windows if required.
-* Use a minimum height of `80svh`, allowing the section to grow when text or stacked actions require more room. Do not use a fixed height that can clip content.
+* Use a minimum height of `100svh`, allowing the section to grow when text or stacked actions require more room. Do not use a fixed height that can clip content.
 * Apply a dark overlay or gradient strong enough for accessible text and button contrast without obscuring the interior composition.
+* Style the left **Khám phá sản phẩm** button with the same dedicated `imageCta` variant as the hero CTA: white `#FFFFFF` background, `#092328` text, no visible border or boundary color, and a subtle shadow. Preserve strong contrast on hover and focus.
 * Keep the centered, vertically stacked content constrained to a readable inner width while the photographic background remains full width.
 * Do not insert a spacer, divider `div`, margin band, or empty section between the Final CTA and footer.
 * Stop the CTA image and overlay at the CTA section boundary; the footer begins immediately afterward as its own semantic landmark.
 * Present the eyebrow as a compact pill above the heading.
 * Keep the heading prominent, the supporting text constrained to a comfortable reading width, and both CTAs grouped beneath it.
 * Display the CTAs side by side when space allows and stack them at full width on narrow screens.
+* Place the trust row below the CTA group with clear spacing. Keep the stars, numeric rating, customer-count copy, and mock disclosure readable without relying on color alone.
+* Hide decorative stars from assistive technology and provide the accessible text **“Xếp hạng minh họa: 4,9 trên 5”**.
+* Keep the disabled Liên hệ control visibly distinct from active actions and expose its disabled state semantically; do not navigate it to an unrelated page.
 * Apply KOMO design-system typography, spacing, button hierarchy, overlay contrast, and focus styles.
 * Use one semantic section heading below the homepage H1 and preserve a logical heading hierarchy.
-* Do not display a physical address, location icon, ratings, customer avatars, customer totals, or other trust claims unless separately supplied and approved.
-* Do not add a contact CTA until a real, approved contact destination exists.
+* Do not display a physical address, location icon, customer avatars, or additional trust claims unless separately supplied and approved.
+* Do not activate the contact CTA until a real, approved contact destination exists.
 
 ## 11. About Page
 

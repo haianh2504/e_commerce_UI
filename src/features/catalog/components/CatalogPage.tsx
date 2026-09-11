@@ -12,7 +12,7 @@ export function CatalogPage({ category, query }: CatalogPageProps) {
   return (
     <>
       <StoreHeader />
-      <main className="min-h-[75svh] pt-18 lg:pt-20">
+      <main id="main-content" tabIndex={-1} className="min-h-[75svh] pt-18 outline-none lg:pt-20">
         <Container className="py-10 sm:py-12 lg:py-16">
           <Breadcrumb items={category ? [{ label: "Trang chủ", href: "/" }, { label: "Sản phẩm", href: "/products" }, { label: category }] : [{ label: "Trang chủ", href: "/" }, { label: "Sản phẩm" }]} />
           <header className="mb-9 mt-6 sm:mb-12">

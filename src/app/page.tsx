@@ -13,6 +13,7 @@ import { mockReviews } from "@/data/mock/reviews";
 import { ProductGrid } from "@/features/catalog/components/ProductGrid";
 import { CustomerReviews } from "@/features/home/components/CustomerReviews";
 import { FinalCta } from "@/features/home/components/FinalCta";
+import { StoreBenefits } from "@/features/home/components/StoreBenefits";
 
 export const metadata: Metadata = {
   title: "Nội thất cho nhịp sống mỗi ngày",
@@ -24,16 +25,16 @@ export default function HomePage() {
   return (
     <>
       <StoreHeader overlay />
-      <main>
+      <main id="main-content" tabIndex={-1} className="max-w-full overflow-x-clip outline-none">
         <section
-          className="relative flex min-h-[100vh] items-center overflow-hidden bg-primary text-white"
+          className="relative flex min-h-[100svh] items-center overflow-hidden bg-primary text-white"
           aria-labelledby="hero-title"
         >
           <Image
             src="/images/komo/hero-living-room.jpg"
             alt="Phòng khách hiện đại với sofa, ghế thư giãn và bàn học bằng gỗ"
             fill
-            priority
+            preload
             sizes="100vw"
             className="object-cover object-center"
           />
@@ -56,7 +57,8 @@ export default function HomePage() {
               <ButtonLink
                 href="/products"
                 size="lg"
-                className="mt-1 border-white bg-white text-primary hover:bg-background"
+                variant="imageCta"
+                className="mt-1"
               >
                 Khám phá bộ sưu tập
                 <ArrowIcon />
@@ -66,10 +68,10 @@ export default function HomePage() {
         </section>
 
         <section
-          className="py-16 sm:py-20 lg:py-24"
+          className="flex min-h-[100svh] items-center py-16 sm:py-20 lg:py-24"
           aria-labelledby="category-heading"
         >
-          <Container>
+          <Container className="w-full">
             <SectionHeading
               titleId="category-heading"
               eyebrow="Không gian của bạn"
@@ -111,10 +113,10 @@ export default function HomePage() {
         </section>
 
         <section
-          className="bg-surface py-16 sm:py-20 lg:py-24"
+          className="flex min-h-[100svh] items-center bg-surface py-16 sm:py-20 lg:py-24"
           aria-labelledby="featured-heading"
         >
-          <Container>
+          <Container className="w-full">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
               <SectionHeading
                 titleId="featured-heading"
@@ -137,8 +139,12 @@ export default function HomePage() {
           </Container>
         </section>
 
-        <section className="flex min-h-[80svh] items-center py-16 sm:py-20 lg:py-24" aria-labelledby="reviews-heading">
-          <Container className="w-full"><CustomerReviews reviews={mockReviews} /></Container>
+        <section className="flex min-h-[100svh] items-center py-14 sm:py-16 lg:py-20" aria-labelledby="benefits-heading">
+          <Container className="w-full"><StoreBenefits /></Container>
+        </section>
+
+        <section className="mt-8 flex min-h-[100svh] items-center bg-white py-16 sm:mt-12 sm:py-20 lg:mt-16 lg:py-24" aria-labelledby="reviews-heading">
+          <Container className="min-w-0"><CustomerReviews reviews={mockReviews} /></Container>
         </section>
 
         <FinalCta />

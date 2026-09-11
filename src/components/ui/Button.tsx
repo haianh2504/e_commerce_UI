@@ -12,11 +12,13 @@ const baseClasses =
 
 const variantClasses = {
   primary:
-    "border border-primary bg-primary text-white hover:bg-[#15363c] active:translate-y-px",
+    "border border-primary bg-primary text-white hover:bg-primary-hover active:translate-y-px",
   secondary:
     "border border-primary bg-surface text-primary hover:bg-surface-subtle active:translate-y-px",
   ghost:
     "border border-transparent bg-transparent text-primary hover:bg-surface-subtle active:translate-y-px",
+  imageCta:
+    "border-0 bg-white text-primary shadow-sm hover:bg-surface-subtle active:translate-y-px focus-visible:ring-white",
 } as const;
 
 const sizeClasses = {
@@ -48,7 +50,7 @@ export function Button({
   className,
   disabled,
   isLoading = false,
-  loadingLabel = "Loading",
+  loadingLabel = "Đang tải",
   size = "md",
   type = "button",
   variant = "primary",

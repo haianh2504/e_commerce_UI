@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 export function LoginShell({ children }: { children: ReactNode }) {
   return (
-    <main className="min-h-svh bg-background p-3 sm:p-5 lg:p-6">
+    <main id="main-content" tabIndex={-1} className="min-h-svh bg-background p-3 outline-none sm:p-5 lg:p-6">
       <div className="relative mx-auto grid min-h-[calc(100svh-1.5rem)] max-w-[100rem] overflow-hidden rounded-card border border-border bg-surface lg:min-h-[calc(100svh-3rem)] lg:grid-cols-[minmax(25rem,43%)_minmax(0,57%)]">
         <Link href="/" aria-label="KOMO — Trang chủ" className="absolute left-6 top-6 z-10 rounded-sm font-heading text-2xl font-semibold tracking-[-0.05em] focus-visible:ring-2 focus-visible:ring-primary sm:left-8 sm:top-8">KOMO</Link>
         <Link href="/" aria-label="Đóng và về trang chủ" className="absolute right-6 top-6 z-10 inline-flex size-11 items-center justify-center rounded-full border border-border bg-surface text-2xl leading-none hover:bg-surface-subtle focus-visible:ring-2 focus-visible:ring-primary sm:right-8 sm:top-8">×</Link>

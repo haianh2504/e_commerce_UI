@@ -24,6 +24,7 @@ Avoid excessive decoration, unnecessary gradients, heavy shadows, and crowded la
 | Token      | Hex       | Usage                                                               |
 | ---------- | --------- | ------------------------------------------------------------------- |
 | Primary    | `#092328` | Primary buttons, headings, important text, icons, and dark sections |
+| Primary hover | `#15363C` | Hover state for primary interactive surfaces |
 | Background | `#F3F4F4` | Dominant page background and general application canvas             |
 
 ### Supporting Neutral Colors
@@ -125,6 +126,8 @@ Use an 8px-based spacing scale where practical:
 ## 5. Buttons
 
 Buttons should feel soft, polished, and visually noticeable while maintaining accessible contrast.
+
+For primary calls to action placed over photographic backgrounds, use the dedicated `imageCta` treatment: white `#FFFFFF` background, primary text `#092328`, no visible border or boundary color, and a subtle shadow. Use the surface-subtle token on hover while preserving primary text. Keep this as a component variant instead of combining conflicting primary-button utility overrides.
 
 ### Primary Button
 
@@ -306,6 +309,11 @@ Every component must support effective SEO where relevant. SEO is primarily achi
 * Support Open Graph metadata for shareable pages.
 * Use structured data such as Product, BreadcrumbList, or Organization only when valid and based on actual available information.
 * Do not invent product ratings, reviews, prices, availability, or other structured data.
+
+### Rating Stars
+
+* Use `#FDCC0D` for every customer-rating star in its default, hover, focus, and static display states.
+* Do not recolor rating stars to match surrounding surfaces. Pair them with text so the rating does not rely on color alone.
 * Ensure important public content is accessible through crawlable links.
 * Use appropriate sitemap and robots configuration when the application is ready for deployment.
 * Avoid duplicate or thin pages where possible.

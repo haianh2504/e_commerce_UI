@@ -5,7 +5,11 @@ import { Input } from "@/components/ui/Input";
 import { mockAccount } from "@/data/mock/account";
 import { AccountShell } from "@/features/account/components/AccountShell";
 
-export const metadata: Metadata = { title: "Thông tin cá nhân" };
+export const metadata: Metadata = {
+  title: "Thông tin cá nhân",
+  description: "Xem giao diện hồ sơ tài khoản minh họa tại KOMO.",
+  robots: { index: false, follow: false },
+};
 
 export default function ProfilePage() {
   return (

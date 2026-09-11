@@ -257,12 +257,13 @@ Complete and review Milestone 2 in this order. Do not combine all tasks into one
 #### Tasks
 
 * Implement a large, full-width photographic hero.
-* Keep the hero full viewport height using a minimum height of `100vh`, allowing natural growth when necessary to prevent content clipping.
+* Keep the hero full viewport height using a `100vh` baseline and mobile-safe `100svh` implementation, allowing natural growth when necessary to prevent content clipping.
 * Use responsive image sizing and cropping.
 * Preserve the approved image focal point across target devices.
 * Apply an overlay or gradient where necessary for readable text.
 * Implement centered content according to the approved design.
 * Use the approved Vietnamese H1, supporting copy, and primary CTA from `docs/homepage-design.md`.
+* Give **Khám phá bộ sưu tập** the dedicated `imageCta` component variant with white `#FFFFFF` background, `#092328` text, no visible border, and visible focus styling.
 * Do not include a secondary CTA.
 * Use approved imagery and copy or clearly identifiable placeholders.
 * Do not implement a carousel.
@@ -280,6 +281,7 @@ Complete and review Milestone 2 in this order. Do not combine all tasks into one
 * Use image-led cards with a `4:3` image ratio.
 * Implement consistent image ratios and responsive grids.
 * Link category cards to valid destinations.
+* Give the complete Featured Categories section a minimum height of `100svh` and center its content vertically, allowing natural growth.
 
 ### 6.7 Featured Products and Listing Foundations
 
@@ -293,8 +295,23 @@ Complete and review Milestone 2 in this order. Do not combine all tasks into one
 * Use meaningful product links.
 * Do not implement cart behavior, filtering, sorting, or product-detail functionality in this milestone.
 * Do not present fake ratings, reviews, stock counts, discounts, or promotional claims as real.
+* Give the complete Featured Products section a minimum height of `100svh` and center its content vertically, allowing natural growth.
 
 **Boundary with Milestone 3:** Milestone 2 establishes the minimum reusable listing components. Milestone 3 extends and reuses them for the complete catalog and product-discovery experience. Do not create duplicate ProductCard or ProductGrid implementations.
+
+### 6.7A Why KOMO / Store Benefits
+
+#### Tasks
+
+* Add the approved trust-focused section after Featured Products and before Customer Reviews.
+* Use the approved heading, supporting sentence, four benefit cards, status pills, expanded descriptions, action labels, and three-item reassurance strip from `docs/homepage-design.md`.
+* Implement consistent decorative line icons for both card and reassurance content without adding an icon dependency.
+* Use an open four-column desktop layout, `2 × 2` tablet layout, and responsive single-column or `2 × 2` mobile layout.
+* Use primary `#092328` for icons and titles, muted neutral descriptions, circular icon fields, subtle card borders and shadows, and generous whitespace.
+* Keep action labels semantically disabled until approved destinations exist; do not invent routes for policies, payment methods, tracking, or contact.
+* Keep the section visually secondary and preserve semantic heading order, responsive readability, and page-width containment.
+* Give the complete Store Benefits section a minimum height of `100svh` and center its content vertically, allowing natural growth.
+* End the benefits section before a `32–64px` responsive breathing gap leading into Customer Reviews.
 
 ### 6.8 Customer Reviews
 
@@ -303,11 +320,13 @@ Complete and review Milestone 2 in this order. Do not combine all tasks into one
 * Implement the approved responsive customer-review carousel from `docs/homepage-design.md`.
 * Clearly label the section and individual ratings as demonstration content rather than verified customer feedback.
 * Keep fictional reviews in separate structured mock data.
-* Show one card on mobile, two on tablet, and three on desktop without causing horizontal page overflow.
-* Give the complete Customer Reviews section a minimum height of `80svh`, center its content vertically, and allow natural growth rather than clipping content.
+* Show two compact cards simultaneously on mobile and tablet and four on desktop without causing horizontal page overflow.
+* Give the complete Customer Reviews section a minimum height of `100svh`, center its content vertically, and allow natural growth rather than clipping content.
+* Give the complete section a solid `#FFFFFF` background and keep it visually detached from Store Benefits using the specified responsive breathing gap.
 * Provide keyboard- and touch-accessible previous and next controls with native disabled states and visible focus treatment.
 * Do not autoplay; respect reduced-motion preferences and provide a readable non-carousel fallback.
-* Do not display aggregate ratings, verified-purchase claims, customer totals, locations, or other unsupported facts.
+* Use `#FDCC0D` for all rating stars and follow the approved compact order: reviewer and purchase state, stars, quote, then representative product image.
+* Do not display aggregate ratings, customer totals, locations, or treat mock purchase states as verified facts.
 
 ### 6.9 Final CTA
 
@@ -315,13 +334,16 @@ Complete and review Milestone 2 in this order. Do not combine all tasks into one
 
 * Implement the approved final CTA after customer reviews and before the shared footer.
 * Follow the centered, vertically stacked hierarchy defined in `docs/homepage-design.md` without copying the reference colors.
-* Use the approved Vietnamese eyebrow, heading, supporting text, and links to `/products` and `/about`.
+* Use the approved Vietnamese eyebrow, heading, supporting text, primary `/products` link, disabled Liên hệ control, trust row, and visible mock-statistics disclosure.
 * Arrange actions side by side when space permits and stack them on narrow screens.
 * Render the supplied local CTA background edge to edge across the viewport with responsive cover cropping, an accessible contrast overlay, and centered constrained content.
-* Preserve the furniture focal area, use a minimum height of `80svh`, and allow natural growth without introducing clipping or horizontal overflow.
+* Preserve the furniture focal area, use a minimum height of `100svh`, and allow natural growth without introducing clipping or horizontal overflow.
 * Render the footer immediately after the CTA without an intervening spacer, divider `div`, margin band, or empty section.
 * Apply the existing design system and maintain accessible contrast, focus states, touch targets, and heading hierarchy.
-* Omit the reference address, contact action, rating summary, customer avatars, customer count, and other unsupported factual claims.
+* Match the left **Khám phá sản phẩm** action to the hero's approved white-background, `#092328`-text image CTA treatment.
+* Keep Liên hệ disabled until a valid destination is approved, and do not route it to an unrelated page.
+* Present the 4.9 rating and 200+ customer count only as visibly labeled mock UI data; do not use them as verified claims or structured metadata.
+* Omit the reference address, customer avatars, and other unsupported factual claims.
 
 ### 6.10 About / Store Information Page
 
@@ -398,8 +420,9 @@ Link featured category and product cards to `/products`. Do not implement catalo
 * [ ] Hero has one semantic H1 and functional CTA destinations.
 * [ ] No unapproved carousel, announcement bar, or promotional section exists.
 * [ ] Featured categories/products use approved or clearly identified mock content.
-* [ ] Customer reviews use a minimum height of `80svh`, are visibly identified as mock content, and remain accessible without autoplay or drag-only interaction.
-* [ ] Final CTA uses a minimum height of `80svh`, the approved full-width background and content hierarchy, readable responsive cropping and contrast, valid destinations, and no separator before the footer.
+* [ ] Every homepage content section from Hero through Final CTA uses a minimum height of `100svh` and grows safely when content requires more room.
+* [ ] Customer reviews are visibly identified as mock content and remain accessible without autoplay or drag-only interaction.
+* [ ] Final CTA uses the approved full-width background and revised content hierarchy, a disabled contact state, visibly disclosed mock trust data, readable responsive cropping and contrast, and no separator before the footer.
 * [ ] ProductCard and ProductGrid foundations are reusable for Milestone 3.
 * [ ] About page is accessible through navigation and links to the catalog.
 * [ ] No invented factual company claims are presented as real.
@@ -642,7 +665,7 @@ Before implementation, approve the intended checkout presentation and any assump
 
 ## 12. Milestone 8 — UI Quality and Polish
 
-**Status:** Not started.
+**Status:** In review; implementation audit and technical checks are complete, pending project-owner visual acceptance.
 
 **Goal:** Improve consistency, usability, and production readiness of the frontend UI layer.
 
@@ -669,13 +692,13 @@ Before implementation, approve the intended checkout presentation and any assump
 
 ### Acceptance Criteria
 
-* [ ] Core UI journeys can be demonstrated.
-* [ ] No major responsive layout issues remain.
-* [ ] Relevant checks pass.
-* [ ] No known critical accessibility issues remain.
-* [ ] UI follows the approved design system.
-* [ ] Mock content is not misrepresented as real business information.
-* [ ] Backend integration remains separate.
+* [x] Core UI journeys can be demonstrated.
+* [x] No major responsive layout issues remain.
+* [x] Relevant checks pass.
+* [x] No known critical accessibility issues remain.
+* [x] UI follows the approved design system.
+* [x] Mock content is not misrepresented as real business information.
+* [x] Backend integration remains separate.
 * [ ] Project owner accepts the UI MVP.
 
 ## 13. Milestone 9 — Backend Integration Preparation

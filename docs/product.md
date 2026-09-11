@@ -470,6 +470,10 @@ Mock data should:
 * Avoid representing mock structures as final backend schemas.
 * Be replaceable when actual API contracts are provided.
 
+The homepage Final CTA may display the specifically approved `4.9` rating and `200+ khách hàng` count only as visibly labeled mock UI content. These values must not be represented as verified business statistics or emitted as structured metadata.
+
+The homepage may present the approved **Vì sao chọn KOMO?** trust-benefit section with delivery, returns, payment, and support messaging. These are storefront presentation statements supplied by the product owner; frontend implementation must not invent operational rules, eligibility details, guarantees, or backend behavior for them.
+
 Do not invent endpoints, DTOs, authentication flows, or business rules.
 
 ## 15. MVP Definition

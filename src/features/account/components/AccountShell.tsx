@@ -17,7 +17,7 @@ export function AccountShell({ children, description, title }: AccountShellProps
   return (
     <>
       <StoreHeader />
-      <main className="min-h-[75svh] pt-18 lg:pt-20">
+      <main id="main-content" tabIndex={-1} className="min-h-[75svh] pt-18 outline-none lg:pt-20">
         <Container className="py-10 sm:py-14 lg:py-20">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-[0.12em] text-text-secondary">Tài khoản minh họa</p>

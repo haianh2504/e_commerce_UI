@@ -145,7 +145,7 @@ export function Catalog({ initialCategory, initialQuery = "" }: CatalogProps) {
         {filteredProducts.length ? (
           <ProductGrid products={filteredProducts} />
         ) : (
-          <EmptyState title="No Product Found" description="Hãy thử từ khóa khác hoặc xóa bộ lọc đang dùng." action={hasActiveFilters ? <Button variant="secondary" onClick={clearFilters}>Xóa bộ lọc</Button> : undefined} />
+          <EmptyState title="Không tìm thấy sản phẩm" description="Hãy thử từ khóa khác hoặc xóa bộ lọc đang dùng." action={hasActiveFilters ? <Button variant="secondary" onClick={clearFilters}>Xóa bộ lọc</Button> : undefined} />
         )}
       </div>
 
@@ -173,19 +173,10 @@ function RadioOption({ checked, label, onChange }: { checked: boolean; label: st
       aria-pressed={checked}
       data-state={checked ? "selected" : "idle"}
       onClick={onChange}
-      style={
-        checked
-          ? {
-              backgroundColor: "#000000",
-              borderColor: "#000000",
-              color: "#ffffff",
-            }
-          : undefined
-      }
       className={cn(
         "flex min-h-11 w-full cursor-pointer items-center rounded-button border px-4 py-2.5 text-left text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
         checked
-          ? "border-black bg-black text-white"
+          ? "border-primary bg-primary text-white"
           : "border-border bg-surface text-text-secondary hover:border-primary hover:text-primary",
       )}
     >

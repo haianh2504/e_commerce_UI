@@ -153,7 +153,7 @@ When a decision changes, do not delete its history. Mark it as superseded and re
 
 ### DEC-008 — Typography
 
-**Status:** Accepted
+**Status:** Superseded by DEC-051
 
 **Decision:** Use Poppins primarily for headings and Inter primarily for content.
 
@@ -471,6 +471,8 @@ When a decision changes, do not delete its history. Mark it as superseded and re
 
 **Consequences:** Reviews remain separate structured mock data. The carousel does not autoplay and must support keyboard, touch, reduced-motion, and a readable non-carousel fallback. Aggregate ratings, verified-purchase badges, customer totals, locations, and other unsupported claims remain prohibited.
 
+**Superseded in part by DEC-040:** The prohibition on purchase badges is replaced only for the visibly disclosed mock-review card presentation described there.
+
 ---
 
 ### DEC-032 — Shared Storefront Navigation Hierarchy
@@ -521,6 +523,8 @@ When a decision changes, do not delete its history. Mark it as superseded and re
 
 **Consequences:** Both sections may grow beyond `80svh` when content wrapping or short viewports require more space; content must not be clipped by a fixed height. DEC-035 remains authoritative for the full-width CTA image, responsive cropping, and contrast overlay, but its `32–64px` spacer requirement is superseded. The CTA and footer remain separate semantic landmarks even though no empty element appears between them.
 
+**Superseded in height by DEC-049:** Customer Reviews and Final CTA now use the same full-viewport baseline as the other homepage content sections.
+
 ---
 
 ### DEC-037 — Full-Viewport Hero and Navigation Weight
@@ -540,6 +544,148 @@ When a decision changes, do not delete its history. Mark it as superseded and re
 **Decision:** Use the Trang chủ navigation label size, fixed at `16px`, for every visible navigation label on desktop and mobile.
 
 **Consequences:** Sản phẩm, product-dropdown entries, Về chúng tôi, Tìm kiếm, Giỏ hàng, and Đăng nhập use the same font size and line-height treatment as Trang chủ. Font weight remains governed by DEC-037, so matching size does not make the other items semibold.
+
+---
+
+### DEC-039 — Final CTA Content and Mock Trust Row
+
+**Status:** Accepted
+
+**Decision:** Update the Final CTA with the approved eyebrow “KHÔNG GIAN CỦA BẠN,” revised comfort-focused supporting copy, a Khám phá sản phẩm action, a Liên hệ control, and a trust row displaying five stars, `4.9`, and “Được tin tưởng bởi 200+ khách hàng.”
+
+**Consequences:** The rating and customer count are presentation-only mock values and require a visible “Số liệu đánh giá minh họa” disclosure. The Liên hệ control remains disabled until a valid contact destination is supplied; it must not navigate to an unrelated page. No structured data or verified-business claim may be derived from the mock trust row.
+
+---
+
+### DEC-040 — Customer Review Card Structure and Star Color
+
+**Status:** Accepted
+
+**Decision:** Present one large customer-review card per carousel viewport with a desktop text/image split, five rating stars, prominent quote, divider, reviewer placeholder and metadata, representative product image, and an upper-right **Đã mua hàng** badge. All rating stars use `#FDCC0D`.
+
+**Consequences:** Names, dates, reviews, ratings, images, and purchase states remain demonstration data. Every card retains a visible **ĐÁNH GIÁ MINH HỌA** label and the section retains its disclosure. The purchase badge must not generate structured metadata or be represented as proof of a real order.
+
+**Superseded in layout by DEC-041:** The review content and star-color requirements remain accepted, but the single large card viewport is replaced by the compact multi-card layout below.
+
+---
+
+### DEC-041 — Compact Multi-Card Customer Reviews
+
+**Status:** Accepted
+
+**Decision:** Keep the approved review content hierarchy in smaller vertically stacked cards, displaying one card on mobile, two on tablet, and three at once on desktop.
+
+**Consequences:** The carousel remains horizontally navigable and accessible, while card widths, typography, imagery, badges, and spacing must stay compact enough to avoid clipping and page-level overflow. Rating stars remain `#FDCC0D`.
+
+**Superseded by DEC-042:** The three-desktop/one-mobile layout is replaced by the denser responsive layout below.
+
+---
+
+### DEC-042 — Four-Desktop and Two-Mobile Review Layout
+
+**Status:** Accepted
+
+**Decision:** Arrange each review card with reviewer identity and purchase state first, followed by stars, quote, and image. Display four cards at once on desktop and two at once on mobile and tablet.
+
+**Consequences:** Cards use reduced type, spacing, avatar, badge, star, and image sizes while retaining readable content, `#FDCC0D` stars, accessible carousel controls, and visible mock-data labels. Narrow header content may wrap but must not overlap or create page-level overflow.
+
+---
+
+### DEC-043 — High-Contrast Homepage Image CTAs
+
+**Status:** Accepted
+
+**Decision:** Use the warning-subtle surface (`#FFF7D6`), primary text, and a solid primary border for the hero **Khám phá bộ sưu tập** and Final CTA **Khám phá sản phẩm** links.
+
+**Consequences:** Both primary links remain visually consistent and distinguishable over varied photographic crops. Their hover state may switch to white while retaining primary text and border, and their keyboard focus indicator must remain visible.
+
+**Superseded by DEC-044:** The warning-subtle treatment did not provide enough perceived contrast and is replaced below.
+
+---
+
+### DEC-044 — Dedicated High-Contrast Image CTA Variant
+
+**Status:** Accepted
+
+**Decision:** Add and use an `imageCta` button variant for both homepage photographic CTAs, with `#FDCC0D` background, `#092328` text, a 2px primary border, subtle shadow, and `#FFE066` hover background.
+
+**Consequences:** The button colors no longer compete with the default primary variant's utility classes. Both calls to action receive a bright, consistent surface with strong foreground contrast and a visible boundary across varied image crops.
+
+**Superseded in color by DEC-045:** The dedicated variant remains authoritative, but its yellow surface is replaced by white.
+
+---
+
+### DEC-045 — White Homepage Image CTA Surface
+
+**Status:** Accepted
+
+**Decision:** Use a white `#FFFFFF` background and `#092328` text for the hero **Khám phá bộ sưu tập** button and the left Final CTA **Khám phá sản phẩm** button. Retain the 2px primary border, subtle shadow, and visible focus state.
+
+**Consequences:** Both requested buttons share the exact approved foreground/background colors through the reusable `imageCta` variant. Hover uses the existing surface-subtle token without weakening text contrast.
+
+**Superseded in boundary treatment by DEC-046:** The white surface and dark text remain accepted, while the visible border is removed.
+
+---
+
+### DEC-046 — Borderless Homepage Image CTAs
+
+**Status:** Accepted
+
+**Decision:** Remove the visible border and boundary color from the hero **Khám phá bộ sưu tập** button and the left Final CTA **Khám phá sản phẩm** button.
+
+**Consequences:** The shared `imageCta` variant uses its white fill and subtle shadow for visual separation. Its visible keyboard focus ring remains because it communicates interaction state rather than serving as a persistent boundary.
+
+---
+
+### DEC-047 — Homepage Why KOMO Benefits Section
+
+**Status:** Accepted
+
+**Decision:** Add a compact **Vì sao chọn KOMO?** section after Featured Products and before Customer Reviews, containing the four approved delivery, returns, payment, and support benefits with consistent line icons.
+
+**Consequences:** The section uses an open four-column desktop layout, `2 × 2` tablet layout, and responsive mobile stacking or `2 × 2` arrangement. It remains visually secondary, uses no heavy individual cards, and does not define operational policies or backend behavior beyond the supplied presentation copy.
+
+---
+
+### DEC-048 — Customer Reviews Surface Separation
+
+**Status:** Accepted
+
+**Decision:** Render the complete Customer Reviews section on a solid white `#FFFFFF` background and separate it from the preceding Store Benefits section with a responsive `32–64px` breathing gap.
+
+**Consequences:** Store Benefits and Customer Reviews remain distinct page regions rather than appearing attached. The gap exposes the page background, while Customer Reviews retains its responsive carousel and internal spacing.
+
+---
+
+### DEC-049 — Full-Viewport Homepage Sections
+
+**Status:** Accepted
+
+**Decision:** Give every homepage content section from Hero through Final CTA a `100vh` minimum-height baseline, implemented as `100svh` for mobile-safe viewport sizing. The shared footer remains content-sized.
+
+**Consequences:** Featured Categories, Featured Products, Store Benefits, Customer Reviews, and Final CTA now align with the full-viewport Hero rhythm. Every section may grow beyond one viewport when its content requires more room; fixed heights and content clipping remain prohibited. The approved breathing gap between Store Benefits and Customer Reviews remains in place.
+
+---
+
+### DEC-050 — Expanded Store Benefits Cards and Reassurance Strip
+
+**Status:** Accepted
+
+**Decision:** Upgrade Store Benefits to four light cards with circular line icons, status pills, expanded approved descriptions, and labeled action rows, followed by a shared three-item reassurance panel.
+
+**Consequences:** This design supersedes DEC-047's open no-card treatment while retaining its placement and responsive grid. Borders and shadows remain subtle. Action labels are disabled presentation controls until valid destinations are approved, so the UI does not invent unsupported policy, payment, tracking, or contact routes.
+
+---
+
+### DEC-051 — Be Vietnam Pro Heading Typography
+
+**Status:** Accepted
+
+**Decision:** Use Be Vietnam Pro for headings and prominent display text, with Inter for body content and interface text.
+
+**Rationale:** This resolves the older Poppins reference in DEC-008 and aligns the decision log with the approved product requirements, design system, and implemented font configuration.
+
+**Consequences:** DEC-008 is superseded. Do not load Poppins or introduce another display family unless a later approved decision replaces this one.
 
 ## 5. Decision Change Procedure
 

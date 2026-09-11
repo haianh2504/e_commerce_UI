@@ -5,7 +5,11 @@ import { Card } from "@/components/ui/Card";
 import { mockAccount, mockOrders } from "@/data/mock/account";
 import { AccountShell } from "@/features/account/components/AccountShell";
 
-export const metadata: Metadata = { title: "Tài khoản" };
+export const metadata: Metadata = {
+  title: "Tài khoản",
+  description: "Xem tổng quan tài khoản minh họa tại KOMO.",
+  robots: { index: false, follow: false },
+};
 
 export default function AccountPage() {
   return (

@@ -5,7 +5,11 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { AuthShell } from "@/features/account/components/AuthShell";
 
-export const metadata: Metadata = { title: "Đăng ký" };
+export const metadata: Metadata = {
+  title: "Đăng ký",
+  description: "Xem giao diện đăng ký tài khoản minh họa tại KOMO.",
+  robots: { index: false, follow: false },
+};
 
 export default function RegisterPage() {
   return (

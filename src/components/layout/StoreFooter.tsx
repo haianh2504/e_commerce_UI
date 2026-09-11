@@ -16,7 +16,7 @@ export function StoreFooter() {
       <Container>
         <div className="grid gap-10 border-b border-white/15 pb-10 md:grid-cols-[1.4fr_1fr] md:items-end">
           <div className="max-w-xl">
-            <Link href="/" className="font-heading text-3xl font-semibold tracking-[-0.04em]">
+            <Link href="/" className="rounded-sm font-heading text-3xl font-semibold tracking-[-0.04em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-primary">
               KOMO
             </Link>
             <p className="mt-4 max-w-md text-sm leading-7 text-white/70">
@@ -28,7 +28,7 @@ export function StoreFooter() {
             <ul className="flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold">
               {footerLinks.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="rounded-sm text-white/80 hover:text-white hover:underline hover:underline-offset-4">
+                  <Link href={item.href} className="rounded-sm text-white/80 hover:text-white hover:underline hover:underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-primary">
                     {item.label}
                   </Link>
                 </li>

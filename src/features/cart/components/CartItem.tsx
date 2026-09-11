@@ -16,7 +16,7 @@ type CartItemProps = {
 export function CartItem({ item, onDecrease, onIncrease, onRemove }: CartItemProps) {
   return (
     <li className="grid gap-5 border-b border-border py-6 first:pt-0 last:border-b-0 last:pb-0 sm:grid-cols-[9rem_1fr]">
-      <Link href={item.productHref} className="relative aspect-[4/5] w-full max-w-36 overflow-hidden rounded-card bg-surface-subtle sm:max-w-none">
+      <Link href={item.productHref} className="relative aspect-[4/5] w-full max-w-36 overflow-hidden rounded-card bg-surface-subtle focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 sm:max-w-none">
         <Image src={item.image} alt={item.imageAlt} fill sizes="(min-width: 640px) 144px, 144px" className="object-cover" />
       </Link>
 
@@ -35,9 +35,9 @@ export function CartItem({ item, onDecrease, onIncrease, onRemove }: CartItemPro
           <div>
             <span className="mb-2 block text-sm font-semibold">Số lượng</span>
             <div className="inline-flex items-center rounded-button border border-border bg-surface" aria-label={`Số lượng ${item.name}`}>
-              <button type="button" onClick={onDecrease} disabled={item.quantity === 1} aria-label={`Giảm số lượng ${item.name}`} className="inline-flex size-11 items-center justify-center rounded-l-button text-xl disabled:cursor-not-allowed disabled:text-disabled">−</button>
+              <button type="button" onClick={onDecrease} disabled={item.quantity === 1} aria-label={`Giảm số lượng ${item.name}`} className="inline-flex size-11 items-center justify-center rounded-l-button text-xl hover:bg-surface-subtle disabled:cursor-not-allowed disabled:text-disabled">−</button>
               <output aria-live="polite" aria-atomic="true" className="min-w-10 text-center font-semibold" aria-label={`${item.quantity} sản phẩm`}>{item.quantity}</output>
-              <button type="button" onClick={onIncrease} aria-label={`Tăng số lượng ${item.name}`} className="inline-flex size-11 items-center justify-center rounded-r-button text-xl">+</button>
+              <button type="button" onClick={onIncrease} aria-label={`Tăng số lượng ${item.name}`} className="inline-flex size-11 items-center justify-center rounded-r-button text-xl hover:bg-surface-subtle">+</button>
             </div>
           </div>
           <p className="font-heading text-lg font-semibold" aria-label={`Thành tiền ${formatVnd(calculateLineTotal(item))}`}>

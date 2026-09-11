@@ -3,7 +3,11 @@ import type { Metadata } from "next";
 import { LoginForm } from "@/features/account/components/LoginForm";
 import { LoginShell } from "@/features/account/components/LoginShell";
 
-export const metadata: Metadata = { title: "Đăng nhập" };
+export const metadata: Metadata = {
+  title: "Đăng nhập",
+  description: "Xem giao diện đăng nhập minh họa dành cho tài khoản KOMO.",
+  robots: { index: false, follow: false },
+};
 
 export default function LoginPage() {
   return (

@@ -16,7 +16,11 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
-  return { title: mockOrders.some((order) => order.id === id) ? `Đơn ${id}` : "Không tìm thấy đơn hàng" };
+  return {
+    title: mockOrders.some((order) => order.id === id) ? `Đơn ${id}` : "Không tìm thấy đơn hàng",
+    description: "Xem chi tiết đơn hàng minh họa trong giao diện tài khoản KOMO.",
+    robots: { index: false, follow: false },
+  };
 }
 
 export default async function OrderDetailPage({ params }: { params: Promise<{ id: string }> }) {

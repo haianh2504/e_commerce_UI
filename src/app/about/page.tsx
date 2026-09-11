@@ -16,7 +16,7 @@ export default function AboutPage() {
   return (
     <>
       <StoreHeader />
-      <main className="pt-18 lg:pt-20">
+      <main id="main-content" tabIndex={-1} className="pt-18 outline-none lg:pt-20">
         <section
           className="py-14 sm:py-20 lg:py-24"
           aria-labelledby="about-title"
@@ -46,7 +46,7 @@ export default function AboutPage() {
                   src="/images/komo/category-desk.jpg"
                   alt="Góc học tập ấm áp với bàn và ghế gỗ"
                   fill
-                  priority
+                  fetchPriority="high"
                   sizes="(max-width: 1023px) 92vw, 46vw"
                   className="object-cover"
                 />

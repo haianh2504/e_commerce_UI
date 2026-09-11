@@ -2,6 +2,7 @@
 
 :root {
   --design-primary: #092328;
+  --design-primary-hover: #15363c;
   --design-background: #f3f4f4;
   --design-surface: #ffffff;
   --design-surface-subtle: #e9ecec;
@@ -13,6 +14,7 @@
   --design-success-subtle: #ecfdf3;
   --design-warning: #713f12;
   --design-warning-subtle: #fff7d6;
+  --design-rating-star: #fdcc0d;
   --design-error: #b42318;
   --design-error-subtle: #fff1f0;
 
@@ -36,6 +38,7 @@
 
 @theme inline {
   --color-primary: var(--design-primary);
+  --color-primary-hover: var(--design-primary-hover);
   --color-background: var(--design-background);
   --color-surface: var(--design-surface);
   --color-surface-subtle: var(--design-surface-subtle);
@@ -47,6 +50,7 @@
   --color-success-subtle: var(--design-success-subtle);
   --color-warning: var(--design-warning);
   --color-warning-subtle: var(--design-warning-subtle);
+  --color-rating-star: var(--design-rating-star);
   --color-error: var(--design-error);
   --color-error-subtle: var(--design-error-subtle);
   --font-sans: var(--font-inter);
@@ -62,10 +66,14 @@
 
 html {
   background: var(--color-background);
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
+  max-width: 100%;
+  overflow-x: clip;
   background: var(--color-background);
   color: var(--color-text-primary);
   font-family: var(--font-inter), Arial, sans-serif;

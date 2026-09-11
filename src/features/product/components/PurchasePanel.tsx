@@ -55,15 +55,15 @@ export function PurchasePanel({ available, productName, unitPrice }: PurchasePan
 
       <Button
         className="mt-6 w-full"
-        style={isAdded ? { backgroundColor: "#10B981", borderColor: "#10B981", color: "#092328" } : undefined}
+        variant={isAdded ? "secondary" : "primary"}
         size="lg"
         disabled={!available}
         onClick={() => setIsAdded(true)}
       >
-        {available ? (isAdded ? "Đã thêm" : "Thêm vào giỏ hàng") : "Tạm hết hàng"}
+        {available ? (isAdded ? "Added to Cart." : "Thêm vào giỏ hàng") : "Tạm hết hàng"}
       </Button>
       <p className="mt-3 min-h-6 text-center text-sm font-semibold text-success" role="status" aria-live="polite">
-        {isAdded ? "Đã thêm" : ""}
+        {isAdded ? "Added to Cart." : ""}
       </p>
       <p className="text-center text-xs text-text-secondary">Thao tác minh họa, không lưu dữ liệu.</p>
     </aside>

@@ -10,13 +10,14 @@ import { Checkout } from "@/features/checkout/components/Checkout";
 export const metadata: Metadata = {
   title: "Thanh toán",
   description: "Hoàn tất thông tin giao hàng trong quy trình thanh toán minh họa của KOMO.",
+  robots: { index: false, follow: false },
 };
 
 export default function CheckoutPage() {
   return (
     <>
       <StoreHeader />
-      <main className="min-h-[75svh] pt-18 lg:pt-20">
+      <main id="main-content" tabIndex={-1} className="min-h-[75svh] pt-18 outline-none lg:pt-20">
         <Container className="py-10 sm:py-12 lg:py-16">
           <Breadcrumb items={[{ label: "Trang chủ", href: "/" }, { label: "Giỏ hàng", href: "/cart" }, { label: "Thanh toán" }]} />
           <header className="mb-9 mt-6 sm:mb-12">

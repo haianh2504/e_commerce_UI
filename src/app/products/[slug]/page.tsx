@@ -31,7 +31,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <>
       <StoreHeader />
-      <main className="min-h-[75svh] pt-18 lg:pt-20">
+      <main id="main-content" tabIndex={-1} className="min-h-[75svh] pt-18 outline-none lg:pt-20">
         <Container className="py-8 sm:py-10 lg:py-14">
           <Breadcrumb items={[{ label: "Trang chủ", href: "/" }, { label: "Sản phẩm", href: "/products" }, { label: product.category, href: `/categories/${product.category === "Ghế" ? "ghe" : product.category === "Bàn học" ? "ban-hoc" : "sofa"}` }, { label: product.name }]} />
 
