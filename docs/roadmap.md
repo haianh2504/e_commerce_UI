@@ -227,8 +227,9 @@ Complete and review Milestone 2 in this order. Do not combine all tasks into one
 2. Implement the storefront shell, approved routes, header, and accessible mobile navigation.
 3. Implement and visually review the homepage hero.
 4. Implement featured categories and the minimum reusable ProductCard/ProductGrid foundation.
-5. Implement the About page and shared footer.
-6. Complete responsive, accessibility, SEO, navigation, and technical verification.
+5. Implement the approved customer-review and final CTA sections.
+6. Implement the About page and shared footer.
+7. Complete responsive, accessibility, SEO, navigation, and technical verification.
 
 ### 6.4 Shared Storefront Header and Navigation
 
@@ -237,9 +238,15 @@ Complete and review Milestone 2 in this order. Do not combine all tasks into one
 * Implement a reusable shared storefront header.
 * Overlay the homepage header on the hero image.
 * Use a transparent or subtly translucent treatment with sufficient contrast.
-* Implement the approved Vietnamese links: Trang chủ, Sản phẩm, Ghế, Bàn học, Sofa, and Về chúng tôi.
-* Omit search, account, and cart actions until their valid UI routes exist.
+* Implement the approved navigation order: KOMO wordmark, Trang chủ, Sản phẩm dropdown, Về chúng tôi, Tìm kiếm, Giỏ hàng, and a distinct Đăng nhập button.
+* Use semibold text only for Trang chủ; render every other navigation item and dropdown entry at regular weight.
+* Use one consistent `16px` font size for all desktop and mobile navigation labels, including dropdown items and the Đăng nhập button.
+* Apply an explicit pointer cursor and visible hover feedback to every interactive navigation link and button while retaining visible keyboard focus states.
+* Populate the Sản phẩm dropdown with links to all products, Ghế, Bàn học, and Sofa using the existing valid catalog and category routes.
+* Keep Tìm kiếm connected to the approved `/products?q=` mock search behavior, Giỏ hàng linked to `/cart`, and Đăng nhập linked to the presentation-only `/login` route.
+* Implement the product dropdown as an accessible disclosure supporting click, touch, keyboard opening, Escape dismissal, focus return, outside dismissal, and exposed expanded state.
 * Implement accessible mobile navigation with open/close behavior, keyboard support, and appropriate focus handling.
+* Preserve the desktop information architecture in the mobile drawer, with product categories grouped beneath the Sản phẩm disclosure.
 * Use an appropriately contrasted header on non-hero pages.
 * Keep the header sticky, transparent over the initial hero, solid after scrolling, and solid on inner pages.
 * Do not implement an announcement bar.
@@ -250,7 +257,7 @@ Complete and review Milestone 2 in this order. Do not combine all tasks into one
 #### Tasks
 
 * Implement a large, full-width photographic hero.
-* Keep the hero approximately 70–85svh so the next section is partially visible.
+* Keep the hero full viewport height using a minimum height of `100vh`, allowing natural growth when necessary to prevent content clipping.
 * Use responsive image sizing and cropping.
 * Preserve the approved image focal point across target devices.
 * Apply an overlay or gradient where necessary for readable text.
@@ -289,11 +296,34 @@ Complete and review Milestone 2 in this order. Do not combine all tasks into one
 
 **Boundary with Milestone 3:** Milestone 2 establishes the minimum reusable listing components. Milestone 3 extends and reuses them for the complete catalog and product-discovery experience. Do not create duplicate ProductCard or ProductGrid implementations.
 
-### 6.8 Excluded Optional Homepage Content
+### 6.8 Customer Reviews
 
-Do not implement promotional/editorial content, a newsletter, testimonials, value propositions, an About teaser, a sale section, or other homepage filler during Milestone 2.
+#### Tasks
 
-### 6.9 About / Store Information Page
+* Implement the approved responsive customer-review carousel from `docs/homepage-design.md`.
+* Clearly label the section and individual ratings as demonstration content rather than verified customer feedback.
+* Keep fictional reviews in separate structured mock data.
+* Show one card on mobile, two on tablet, and three on desktop without causing horizontal page overflow.
+* Give the complete Customer Reviews section a minimum height of `80svh`, center its content vertically, and allow natural growth rather than clipping content.
+* Provide keyboard- and touch-accessible previous and next controls with native disabled states and visible focus treatment.
+* Do not autoplay; respect reduced-motion preferences and provide a readable non-carousel fallback.
+* Do not display aggregate ratings, verified-purchase claims, customer totals, locations, or other unsupported facts.
+
+### 6.9 Final CTA
+
+#### Tasks
+
+* Implement the approved final CTA after customer reviews and before the shared footer.
+* Follow the centered, vertically stacked hierarchy defined in `docs/homepage-design.md` without copying the reference colors.
+* Use the approved Vietnamese eyebrow, heading, supporting text, and links to `/products` and `/about`.
+* Arrange actions side by side when space permits and stack them on narrow screens.
+* Render the supplied local CTA background edge to edge across the viewport with responsive cover cropping, an accessible contrast overlay, and centered constrained content.
+* Preserve the furniture focal area, use a minimum height of `80svh`, and allow natural growth without introducing clipping or horizontal overflow.
+* Render the footer immediately after the CTA without an intervening spacer, divider `div`, margin band, or empty section.
+* Apply the existing design system and maintain accessible contrast, focus states, touch targets, and heading hierarchy.
+* Omit the reference address, contact action, rating summary, customer avatars, customer count, and other unsupported factual claims.
+
+### 6.10 About / Store Information Page
 
 #### Tasks
 
@@ -305,7 +335,7 @@ Do not implement promotional/editorial content, a newsletter, testimonials, valu
 * Use semantic headings and appropriate metadata.
 * Do not invent factual company history, founders, locations, certifications, achievements, partnerships, or guarantees.
 
-### 6.10 Shared Footer
+### 6.11 Shared Footer
 
 #### Tasks
 
@@ -315,14 +345,15 @@ Do not implement promotional/editorial content, a newsletter, testimonials, valu
 * Do not display the provisional address or invent addresses, phone numbers, legal policies, or social accounts.
 * Ensure responsive layout and accessible semantic markup.
 * Avoid dead links and unsupported functionality.
+* Keep the footer structurally separate from the Final CTA while placing it immediately after the CTA with no empty separator element.
 
-### 6.11 Route Continuity
+### 6.12 Route Continuity
 
 Implement `/`, `/products`, and `/about`. The `/products` route may be a minimal, clearly labeled catalog placeholder until Milestone 3. Keep `/dev/components` development-only and out of storefront navigation.
 
 Link featured category and product cards to `/products`. Do not implement catalog filtering, sorting, product details, search, account, cart, or checkout merely to satisfy a Milestone 2 link.
 
-### 6.12 Responsive, Accessibility, and SEO Review
+### 6.13 Responsive, Accessibility, and SEO Review
 
 #### Tasks
 
@@ -345,6 +376,8 @@ Link featured category and product cards to `/products`. Do not implement catalo
 * Shared storefront header and footer.
 * Responsive desktop and mobile navigation.
 * Featured categories and products.
+* Responsive mock customer-review section.
+* Approved final CTA section.
 * Reusable ProductCard/ProductGrid foundations where needed.
 * About / Store Information page.
 * Minimal route placeholders only where approved and necessary.
@@ -354,14 +387,19 @@ Link featured category and product cards to `/products`. Do not implement catalo
 
 * [x] Design specification was approved before major implementation.
 * [ ] Homepage matches the approved reference composition and design system.
-* [ ] Hero uses a full-width background image with readable overlaid content.
+* [ ] Hero uses a full-width background image, a minimum height of `100vh`, and readable overlaid content.
 * [ ] Homepage navigation is visually integrated with the hero.
 * [ ] Non-hero navigation remains readable.
 * [ ] Desktop and mobile navigation work across target devices.
+* [ ] Trang chủ is the only bold navigation item; all navigation labels share its `16px` size, and all navigation interactions expose pointer and hover feedback.
 * [ ] Mobile menu supports accessible keyboard interaction and focus behavior.
+* [ ] The Sản phẩm dropdown exposes every approved category and works with keyboard, touch, Escape dismissal, and focus restoration.
+* [ ] Tìm kiếm, Giỏ hàng, and Đăng nhập lead to valid UI destinations without introducing backend behavior.
 * [ ] Hero has one semantic H1 and functional CTA destinations.
 * [ ] No unapproved carousel, announcement bar, or promotional section exists.
 * [ ] Featured categories/products use approved or clearly identified mock content.
+* [ ] Customer reviews use a minimum height of `80svh`, are visibly identified as mock content, and remain accessible without autoplay or drag-only interaction.
+* [ ] Final CTA uses a minimum height of `80svh`, the approved full-width background and content hierarchy, readable responsive cropping and contrast, valid destinations, and no separator before the footer.
 * [ ] ProductCard and ProductGrid foundations are reusable for Milestone 3.
 * [ ] About page is accessible through navigation and links to the catalog.
 * [ ] No invented factual company claims are presented as real.
@@ -490,7 +528,7 @@ Link featured category and product cards to `/products`. Do not implement catalo
 
 ## 9. Milestone 5 — Shopping Cart UI
 
-**Status:** Not started.
+**Status:** Implemented; awaiting project-owner acceptance.
 
 **Goal:** Allow customers to review and adjust a mock shopping cart.
 
@@ -515,16 +553,16 @@ Link featured category and product cards to `/products`. Do not implement catalo
 
 ### Acceptance Criteria
 
-* [ ] Quantity and removal interactions update the mock UI.
-* [ ] Empty-cart state is handled.
-* [ ] Totals are clearly labeled and visually consistent.
-* [ ] Mobile cart layout is usable.
-* [ ] No real order, inventory, or payment logic is introduced.
+* [x] Quantity and removal interactions update the mock UI.
+* [x] Empty-cart state is handled.
+* [x] Totals are clearly labeled and visually consistent.
+* [x] Mobile cart layout is usable.
+* [x] No real order, inventory, or payment logic is introduced.
 * [ ] Project owner accepts the cart UI.
 
 ## 10. Milestone 6 — Checkout UI
 
-**Status:** Not started.
+**Status:** In review; implementation and technical checks are complete, pending project-owner visual acceptance.
 
 **Goal:** Create a polished checkout presentation without implementing backend transactions.
 
@@ -552,23 +590,28 @@ Before implementation, approve the intended checkout presentation and any assump
 
 ### Acceptance Criteria
 
-* [ ] Checkout steps are clear and easy to understand.
-* [ ] Forms have accessible labels and states.
-* [ ] Order summary is readable on all target devices.
-* [ ] Mock confirmation is not represented as a real order.
-* [ ] No real payment processing or order persistence is implemented.
-* [ ] Final business rules remain owned by the backend.
+* [x] Checkout steps are clear and easy to understand.
+* [x] Forms have accessible labels and states.
+* [x] Order summary is readable on all target devices.
+* [x] Mock confirmation is not represented as a real order.
+* [x] No real payment processing or order persistence is implemented.
+* [x] Final business rules remain owned by the backend.
 * [ ] Project owner accepts the checkout UI.
 
 ## 11. Milestone 7 — Authentication and Account UI
 
-**Status:** Not started.
+**Status:** In review; implementation and technical checks are complete, pending project-owner visual acceptance.
 
 **Goal:** Complete the customer-facing account screens using presentation-only behavior.
 
 ### Tasks
 
-* Implement login screen.
+* Implement the `/login` screen according to `docs/authentication-design.md`, using the reference wireframe and adapted Vietnamese content without copying its imagery, colors, or fonts.
+* Link the shared-header Đăng nhập button directly to `/login`.
+* Use the approved responsive two-column login composition on wide screens and a single-column form on smaller screens.
+* Include the KOMO home link, explicit home/close control, email and password fields, presentation-only primary action, disclosure, and registration link.
+* Reserve the right-side visual region without copying or inventing an image until an asset is separately approved.
+* Omit social authentication and legal links until providers, routes, and content are approved.
 * Implement registration screen.
 * Implement password recovery UI if approved.
 * Implement account overview.
@@ -583,15 +626,18 @@ Before implementation, approve the intended checkout presentation and any assump
 ### Deliverables
 
 * Authentication screens.
+* Approved responsive login-page layout.
 * Account layout.
 * Order history and detail interfaces.
 
 ### Acceptance Criteria
 
-* [ ] Forms are responsive and accessible.
-* [ ] Order statuses use approved mock values.
-* [ ] Empty order history is handled.
-* [ ] No authentication service, token management, or backend account logic is implemented.
+* [x] Forms are responsive and accessible.
+* [x] The navigation Đăng nhập button opens `/login`, and the login page matches the approved wireframe and content hierarchy.
+* [x] The login UI clearly states that credentials are not submitted or stored and contains no unapproved imagery, provider, or legal destination.
+* [x] Order statuses use the neutral `Dữ liệu minh họa` value; no lifecycle status or transition is invented.
+* [x] Empty order history is handled.
+* [x] No authentication service, token management, or backend account logic is implemented.
 * [ ] Project owner accepts the account UI.
 
 ## 12. Milestone 8 — UI Quality and Polish

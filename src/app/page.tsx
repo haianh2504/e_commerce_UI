@@ -9,7 +9,10 @@ import { ButtonLink } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { featuredCategories } from "@/data/mock/categories";
 import { featuredProducts } from "@/data/mock/products";
+import { mockReviews } from "@/data/mock/reviews";
 import { ProductGrid } from "@/features/catalog/components/ProductGrid";
+import { CustomerReviews } from "@/features/home/components/CustomerReviews";
+import { FinalCta } from "@/features/home/components/FinalCta";
 
 export const metadata: Metadata = {
   title: "Nội thất cho nhịp sống mỗi ngày",
@@ -23,7 +26,7 @@ export default function HomePage() {
       <StoreHeader overlay />
       <main>
         <section
-          className="relative flex min-h-[76svh] items-center overflow-hidden bg-primary text-white sm:min-h-[80svh]"
+          className="relative flex min-h-[100vh] items-center overflow-hidden bg-primary text-white"
           aria-labelledby="hero-title"
         >
           <Image
@@ -133,6 +136,12 @@ export default function HomePage() {
             </div>
           </Container>
         </section>
+
+        <section className="flex min-h-[80svh] items-center py-16 sm:py-20 lg:py-24" aria-labelledby="reviews-heading">
+          <Container className="w-full"><CustomerReviews reviews={mockReviews} /></Container>
+        </section>
+
+        <FinalCta />
       </main>
       <StoreFooter />
     </>

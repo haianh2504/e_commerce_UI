@@ -33,6 +33,7 @@ type ButtonStyleProps = {
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
   ButtonStyleProps & {
     isLoading?: boolean;
+    loadingLabel?: string;
   };
 
 function buttonClasses({
@@ -47,6 +48,7 @@ export function Button({
   className,
   disabled,
   isLoading = false,
+  loadingLabel = "Loading",
   size = "md",
   type = "button",
   variant = "primary",
@@ -64,7 +66,7 @@ export function Button({
       <span>
         {isLoading ? (
           <>
-            Loading<span className="sr-only">: {children}</span>
+          {loadingLabel}<span className="sr-only">: {children}</span>
           </>
         ) : (
           children

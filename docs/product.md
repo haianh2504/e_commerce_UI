@@ -291,6 +291,8 @@ Potential screens:
 
 These screens are presentation-only. Do not implement authentication services, token storage, session management, or backend validation without explicit instructions.
 
+The `/login` route follows the approved split-layout wireframe and Vietnamese content in `docs/authentication-design.md`. The shared-header Đăng nhập button links directly to this route. Its form remains non-submitting until an explicit backend contract is provided.
+
 ### 7.7 User Account
 
 **Purpose:** Allow customers to view account-related information.

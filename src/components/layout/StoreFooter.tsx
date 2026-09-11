@@ -5,6 +5,8 @@ import { Container } from "./Container";
 const footerLinks = [
   { label: "Trang chủ", href: "/" },
   { label: "Sản phẩm", href: "/products" },
+  { label: "Giỏ hàng", href: "/cart" },
+  { label: "Tài khoản", href: "/account" },
   { label: "Giới thiệu", href: "/about" },
 ] as const;
 

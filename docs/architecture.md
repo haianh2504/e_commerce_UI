@@ -74,6 +74,7 @@ ecommerce-ui/
 │   ├── architecture.md
 │   ├── components.md
 │   ├── homepage-design.md
+│   ├── authentication-design.md
 │   ├── roadmap.md
 │   └── decisions.md
 │
@@ -187,6 +188,21 @@ Use route groups when they improve layout organization. Do not create unnecessar
 The approved Milestone 2 public routes are `/`, `/products`, and `/about`. The existing `/dev/components` route remains a development-only showcase and must not appear in storefront navigation.
 
 Until the complete catalog and product-detail experiences are implemented, `/products` may be a clearly labeled minimal placeholder. Featured category and product links may point to `/products`; do not create premature category or product-detail routes solely to satisfy homepage links.
+
+### Current Shared Navigation
+
+The current storefront navigation uses the valid routes added through later milestones:
+
+* KOMO wordmark and Trang chủ → `/`.
+* Sản phẩm is an accessible dropdown trigger containing `/products`, `/categories/ghe`, `/categories/ban-hoc`, and `/categories/sofa`.
+* Về chúng tôi → `/about`.
+* Tìm kiếm uses the `/products?q=` query interface; it does not introduce another route or backend search contract.
+* Giỏ hàng → `/cart`.
+* Đăng nhập → `/login`; it opens presentation-only authentication UI and does not imply a session.
+
+Desktop and mobile navigation must preserve the same destinations. The desktop product menu and its mobile disclosure are interactive Client Component behavior; route destinations and surrounding layout remain ordinary semantic links and Server Components where interaction is not required.
+
+The `/login` page follows `docs/authentication-design.md`. Its responsive shell and fields are presentation components; no route handler, server action, authentication middleware, provider SDK, session store, cookie logic, or token management belongs in this milestone. The right-side desktop visual region remains asset-independent until approved media is supplied.
 
 ### Page Responsibilities
 
